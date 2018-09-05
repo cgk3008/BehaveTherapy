@@ -1580,6 +1580,8 @@
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\single-post.html" />
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\sitemap.html" />
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\testimonials.html" />
+    <Content Include="Assets\Videos\20170902_120437.wmv" />
+    <Content Include="Assets\Videos\Savage start 2017-Introduction Final-phone.mp4" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
