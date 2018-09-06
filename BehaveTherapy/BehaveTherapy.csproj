@@ -1580,8 +1580,7 @@
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\single-post.html" />
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\sitemap.html" />
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\testimonials.html" />
-    <Content Include="Assets\Videos\20170902_120437.wmv" />
-    <Content Include="Assets\Videos\Savage start 2017-Introduction Final-phone.mp4" />
+    <Content Include="Assets\Videos\SavageRace.mp4" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -1706,6 +1705,8 @@
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\js\revolution-slider\videojs\font\vjs.ttf" />
     <Content Include="Assets\GALLAXY-HTML\HTML\GallaxyWide\js\revolution-slider\videojs\font\vjs.woff" />
     <Content Include="Assets\GALLAXY-HTML\PSDS\galaxi_logo.psd" />
+    <Content Include="Assets\Videos\Web.config" />
+    <None Include="Properties\PublishProfiles\BehaveTherapy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
