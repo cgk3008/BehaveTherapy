@@ -15,7 +15,16 @@ namespace BehaveTherapy.Models
         public string TherapistId { get; set; }
         public bool IsDeleted { get; set; }
 
-        public virtual ICollection<Lesson> Lesson { get; set; }
+        public virtual ICollection<Exercises> Exercises { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
+
+        public TherapyPlan()
+        {
+
+            Users = new HashSet<ApplicationUser>();
+            Exercises = new HashSet<Exercises>();
+            
+        }
 
     }
 }
