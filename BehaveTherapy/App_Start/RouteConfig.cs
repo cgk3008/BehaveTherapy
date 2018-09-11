@@ -16,6 +16,8 @@ namespace BehaveTherapy
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+
+                // change to Landing Page once I add that View.
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
