@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BehaveTherapy.Models
 {
-    public class ExerciseLog
+    public class TherapyPlan
     {
         public int Id { get; set; }
         [StringLength(100, ErrorMessage = "The {0} cannot be {1} characters long.")]
@@ -18,7 +18,7 @@ namespace BehaveTherapy.Models
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
 
-        public TherapyPlan()
+        public TherapyPlan() 
         {
 
             Users = new HashSet<ApplicationUser>();
