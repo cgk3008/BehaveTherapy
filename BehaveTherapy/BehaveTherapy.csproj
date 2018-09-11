@@ -198,6 +198,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashboardView Model.cs" />
     <Compile Include="Models\Exercises.cs" />
+    <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\PlanNotifications.cs" />
     <Compile Include="Models\TherapyPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
