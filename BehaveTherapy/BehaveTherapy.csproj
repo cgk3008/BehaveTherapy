@@ -198,14 +198,17 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\Exercises.cs" />
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\PlanNotifications.cs" />
     <Compile Include="Models\TherapyPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UserRolesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <None Include="Views\Account\ResendEmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />

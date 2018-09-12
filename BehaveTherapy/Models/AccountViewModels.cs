@@ -64,6 +64,11 @@ namespace BehaveTherapy.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -109,4 +114,14 @@ namespace BehaveTherapy.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class ResendEmailConfirmationViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+    }
+
+
 }
