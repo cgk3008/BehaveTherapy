@@ -18,12 +18,14 @@ namespace BehaveTherapy.Controllers
             var userId = User.Identity.GetUserId();
 
             var userPlans = db.TherapPlan.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
+            var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
+            var userExercises = db.Exercises.Where(n => n.)
 
 
             DashboardViewModel model = new DashboardViewModel()
             {
-                TherapyPlan = userPlans,
-                TherapyPlanNotifications = userPlanNotifications,
+                Plans = userPlans,
+                PlanNotifications = userPlanNotifications,
                 Exercises = userExercises
             };
 

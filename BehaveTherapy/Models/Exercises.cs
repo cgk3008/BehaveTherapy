@@ -14,14 +14,27 @@ namespace BehaveTherapy.Models
         public string Title { get; set; }
         [StringLength(400, ErrorMessage = "The {0} cannot be {1} characters long.")]
         public string Description { get; set; }
+        public int PlanId { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
         public string TimeZoneCreated { get; set; }
         public DateTimeOffset? StartDate { get; set; }
         public DateTimeOffset? DeadlineDate { get; set; }
+        public string AssignedToUserId { get; set; }
 
 
         public virtual TherapyPlan Plan { get; set; }
+        public virtual TherapyPlan TherapistId { get; set; }
+        public virtual ApplicationUser AssignedToUser { get; set; }
+
+
+
+        public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
+
+        public Exercises()
+        {
+            PlanNotifications = new HashSet<PlanNotifications>();
+        }
 
 
 
