@@ -12,25 +12,25 @@ namespace BehaveTherapy.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
+        //[Authorize]
         public ActionResult Index()
         {
-            var userId = User.Identity.GetUserId();
+            //var userId = User.Identity.GetUserId();
 
-            var userPlans = db.TherapPlan.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
-            var userExercises = db.Exercises.Where(n => n.AssignedToUserId == userId).ToList();
-            var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
+            //var userPlans = db.TherapPlan.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
+            //var userExercises = db.Exercises.Where(n => n.AssignedToUserId == userId).ToList();
+            ////var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
            
 
 
-            DashboardViewModel model = new DashboardViewModel()
-            {
-                Plans = userPlans,
-                PlanNotifications = userPlanNotifications,
-                Exercises = userExercises
-            };
+            //DashboardViewModel model = new DashboardViewModel()
+            //{
+            //    Plans = userPlans,
+            //    //PlanNotifications = userPlanNotifications,
+            //    Exercises = userExercises
+            //};
 
-            return View(model);
+            return View(/*model*/);
         }
 
         public ActionResult About()
