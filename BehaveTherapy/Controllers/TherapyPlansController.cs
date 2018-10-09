@@ -76,6 +76,9 @@ namespace BehaveTherapy.Controllers
             {
                 return HttpNotFound();
             }
+
+            UserRolesHelper helper = new UserRolesHelper();
+            var therapistList = helper.ListUsersInRole("")
             return View(therapyPlan);
         }
 
