@@ -17,7 +17,7 @@ namespace BehaveTherapy.Controllers
         // GET: TherapyPlans
         public ActionResult Index()
         {
-            return View(db.TherapPlan.ToList());
+            return View(db.TherapyPlan.ToList());
         }
 
         // GET: TherapyPlans/Details/5
@@ -27,7 +27,7 @@ namespace BehaveTherapy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TherapyPlan therapyPlan = db.TherapPlan.Find(id);
+            TherapyPlan therapyPlan = db.TherapyPlan.Find(id);
             if (therapyPlan == null)
             {
                 return HttpNotFound();
@@ -50,12 +50,18 @@ namespace BehaveTherapy.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TherapPlan.Add(therapyPlan);
+                therapyPlan.Created = DateTime.Now;
+                therapyPlan.IsDeleted = false;
+                db.TherapyPlan.Add(therapyPlan);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index");  
             }
 
-            return View(therapyPlan);
+            return View(therapyPlan); 
+            //SO bug tracker has below code
+            //return RedirectToAction("Index", "AdminProjects");
+            // this is for the admin to add and remove users to projects etc.,  I guess we would have to do that, but if app gets popular, then we may want this automated for quicker setup!!!!
+        
         }
 
         // GET: TherapyPlans/Edit/5
@@ -65,7 +71,7 @@ namespace BehaveTherapy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TherapyPlan therapyPlan = db.TherapPlan.Find(id);
+            TherapyPlan therapyPlan = db.TherapyPlan.Find(id);
             if (therapyPlan == null)
             {
                 return HttpNotFound();
@@ -96,7 +102,7 @@ namespace BehaveTherapy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TherapyPlan therapyPlan = db.TherapPlan.Find(id);
+            TherapyPlan therapyPlan = db.TherapyPlan.Find(id);
             if (therapyPlan == null)
             {
                 return HttpNotFound();
@@ -109,8 +115,8 @@ namespace BehaveTherapy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TherapyPlan therapyPlan = db.TherapPlan.Find(id);
-            db.TherapPlan.Remove(therapyPlan);
+            TherapyPlan therapyPlan = db.TherapyPlan.Find(id);
+            db.TherapyPlan.Remove(therapyPlan);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

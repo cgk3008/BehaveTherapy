@@ -52,7 +52,7 @@ namespace BehaveTherapy.Models
             return new ApplicationDbContext();
         }
 
-public DbSet<TherapyPlan> TherapPlan { get; set; }
+public DbSet<TherapyPlan> TherapyPlan { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
 
