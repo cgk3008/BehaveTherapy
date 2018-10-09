@@ -6,17 +6,17 @@ using System.Web;
 
 namespace BugTracker.Models.Helper
 {
-    public class ProjectHelper
+    public class TherapyPlanHelper
     {
 
 
         private ApplicationDbContext dB = new ApplicationDbContext();
 
-        public Exception AddUserToProject(string userId, int projectId)
+        public Exception AddUserToTherapyPlan(string userId, int therapyPlanId)
         {
             try
             {
-                var prj = dB.TherapyPlan.Find(projectId);
+                var prj = dB.TherapyPlan.Find(therapyPlanId);
                 var usr = dB.Users.Find(userId);
                 prj.Users.Add(usr); /*why didn't this work with prj.Users.Add(str);*/
                 dB.SaveChanges();
@@ -28,11 +28,11 @@ namespace BugTracker.Models.Helper
             }
         }
 
-        public Exception RemoveUserFromProject(string userId, int projectId)
+        public Exception RemoveUserFromTherapyPlan(string userId, int therapyPlanId)
         {
             try
             {
-                var prj = dB.Project.Find(projectId);
+                var prj = dB.TherapyPlan.Find(therapyPlanId);
                 var usr = dB.Users.Find(userId);
                 prj.Users.Remove(usr);
                 dB.SaveChanges();
@@ -44,42 +44,42 @@ namespace BugTracker.Models.Helper
             }
         }
 
-        public ICollection<User> ListUsersOnProject(int projectId)
+        public ICollection<ApplicationUser> ListUsersOnTherapyPlan(int therapyPlanId)
         {
-            return dB.Project.Find(projectId).Users.ToList();
+            return dB.TherapyPlan.Find(therapyPlanId).Users.ToList();
         }
 
-        public ICollection<User> ListPmForProject(int projectId)
+        public ICollection<ApplicationUser> ListPmForTherapyPlan(int therapyPlanId)
             //do i need to User above to "string"?
         {
-            var pm = dB.Project.Find(projectId).PmId;
-            var usr = dB.Users.Find(pm).FullName;
-            //dB.Users.Find(pm).FullName;
+            var therapist = dB.TherapyPlan.Find(therapyPlanId).TherapistId;
+            var usr = dB.Users.Find(therapist).FullName;
+            //dB.Users.Find(therapist).FullName;
 
             return null;
         }
 
-        public ICollection<Project> ListProjectsForUser(string userId)
+        public ICollection<TherapyPlan> ListTherapyPlansForUser(string userId)
         {
 
-            //var isnotdeleted = dB.Project.Where(p => p.IsDeleted == false).ToList();
+            //var isnotdeleted = dB.TherapyPlan.Where(p => p.IsDeleted == false).ToList();
             //var proj = isnotdeleted.Users.Find(userId).
-            //    var projects = dB.Users.Find(userId).Project.ToList();
+            //    var therapyPlans = dB.Users.Find(userId).TherapyPlan.ToList();
 
-            //if (projects != null)
+            //if (therapyPlans != null)
             //{
-            //    projects.
+            //    therapyPlans.
             //}
 
-            return dB.Users.Find(userId).Project.ToList();
+            return dB.Users.Find(userId).TherapyPlan.ToList();
 
             //all this code simplified above
             //var usr = dB.Users.Find(userId);
-            //List<Project> ProjUsers = new List<Project>();
+            //List<TherapyPlan> ProjUsers = new List<TherapyPlan>();
 
             //try
             //{
-            //    var prj = dB.Project.ToList();
+            //    var prj = dB.TherapyPlan.ToList();
             //    foreach (var p in prj)
             //    {
             //        if(p.Users.Contains(usr))
@@ -98,12 +98,12 @@ namespace BugTracker.Models.Helper
         
 
 
-        //IsUserOnProject
-        public bool IsUserOnProject(string userId, int projectId)
+        //IsUserOnTherapyPlan
+        public bool IsUserOnTherapyPlan(string userId, int therapyPlanId)
         {
             try
             {
-                var prj = dB.Project.Find(projectId);
+                var prj = dB.TherapyPlan.Find(therapyPlanId);
                 var usr = dB.Users.Find(userId);
                 //prj.User.Find(usr);
 
@@ -124,16 +124,16 @@ namespace BugTracker.Models.Helper
 
 
 
-        //UserNotOnProject(edited)
+        //UserNotOnTherapyPlan(edited)
 
-        public ICollection<string> ListUsersNotOnProject(int projectId)
+        public ICollection<string> ListUsersNotOnTherapyPlan(int therapyPlanId)
         {
             List<string> usersNotProj = new List<string>();
             var users = dB.Users;
 
             foreach (var u in users)
             {
-                if (!IsUserOnProject(u.Id, projectId))
+                if (!IsUserOnTherapyPlan(u.Id, therapyPlanId))
                 {
                     usersNotProj.Add(u.DisplayName);
                 }
