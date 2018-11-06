@@ -18,12 +18,18 @@ namespace BehaveTherapy.Models
         public virtual ICollection<TherapyPlan> TherapyPlan {get; set;}
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
+        public virtual ICollection<TherapyPlanComments> Comment { get; set; }        
+        public virtual ICollection<TherapyPlanAttachment> Attachment { get; set; }
+        public virtual ICollection<TherapyPlanHistory> History { get; set; }
 
         public ApplicationUser()
         {
             TherapyPlan = new HashSet<TherapyPlan>();
             Exercises = new HashSet<Exercises>();
             PlanNotifications = new HashSet<PlanNotifications>();
+            Comment = new HashSet<TherapyPlanComments>();
+            Attachment = new HashSet<TherapyPlanAttachment>();
+            History = new HashSet<TherapyPlanHistory>();
         }
 
 
@@ -58,8 +64,14 @@ public DbSet<TherapyPlan> TherapyPlan { get; set; }
 
         public System.Data.Entity.DbSet<BehaveTherapy.Models.TherapyPlanComments> TherapyPlanComments { get; set; }
 
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<TherapyPlanAttachment> TherapyPlanAttachments { get; set; }     
 
         public System.Data.Entity.DbSet<BehaveTherapy.Models.TherapyPlanHistory> TherapyPlanHistories { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanPriority> PlanPriorities { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanStatus> PlanStatus { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanType> PlanTypes { get; set; }
     }
 }

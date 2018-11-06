@@ -149,6 +149,39 @@ namespace BehaveTherapy.Migrations
 
 
 
+            //if (!context.Priority.Any(u => u.Name == "Urgent"))
+            //{ context.Priority.Add(new PlanPriority { Name = "Urgent" }); }
+
+            //if (!context.Priority.Any(u => u.Name == "High"))
+            //{ context.Priority.Add(new PlanPriority { Name = "High" }); }
+
+            //if (!context.Priority.Any(u => u.Name == "Medium"))
+            //{ context.Priority.Add(new PlanPriority { Name = "Medium" }); }
+
+            //if (!context.Priority.Any(u => u.Name == "Low"))
+            //{ context.Priority.Add(new PlanPriority { Name = "Low" }); }
+
+
+
+            //if (!context.Type.Any(u => u.Name == "Production Fix"))
+            //{ context.Type.Add(new PlanType { Name = "Production Fix" }); }
+
+            //if (!context.Type.Any(u => u.Name == "Project Task"))
+            //{ context.Type.Add(new PlanType { Name = "Project Task" }); }
+
+            //if (!context.Type.Any(u => u.Name == "Software Update"))
+            //{ context.Type.Add(new PlanType { Name = "Software Update" }); }
+
+
+            //if (!context.Status.Any(u => u.Name == "New"))
+            //{ context.Status.Add(new PlanStatus { Name = "New" }); }
+
+            //if (!context.Status.Any(u => u.Name == "Active"))
+            //{ context.Status.Add(new PlanStatus { Name = "In Development" }); }
+
+            //if (!context.Status.Any(u => u.Name == "Completed"))
+            //{ context.Status.Add(new PlanStatus { Name = "Completed" }); }
+
 
         }
     }

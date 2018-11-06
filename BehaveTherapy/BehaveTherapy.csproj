@@ -194,6 +194,9 @@
     <Compile Include="Controllers\ExercisesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlanPrioritiesController.cs" />
+    <Compile Include="Controllers\PlanStatusController.cs" />
+    <Compile Include="Controllers\PlanTypesController.cs" />
     <Compile Include="Controllers\TherapyPlanCommentsController.cs" />
     <Compile Include="Controllers\TherapyPlanHistoriesController.cs" />
     <Compile Include="Controllers\TherapyPlansController.cs" />
@@ -213,9 +216,13 @@
     <Compile Include="Models\Helper\ExerciseHelper.cs" />
     <Compile Include="Models\Helper\UserRolesHelper.cs" />
     <Compile Include="Models\PlanNotifications.cs" />
+    <Compile Include="Models\PlanPriority.cs" />
+    <Compile Include="Models\PlanStatus.cs" />
+    <Compile Include="Models\PlanType.cs" />
     <Compile Include="Models\TherapyPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TherapyPlanAttachment.cs" />
     <Compile Include="Models\TherapyPlanComments.cs" />
     <Compile Include="Models\TherapyPlanHistory.cs" />
     <Compile Include="Models\UploadImageValidator.cs" />
@@ -238,6 +245,21 @@
     <Content Include="Views\TherapyPlanHistories\Details.cshtml" />
     <Content Include="Views\TherapyPlanHistories\Edit.cshtml" />
     <Content Include="Views\TherapyPlanHistories\Index.cshtml" />
+    <Content Include="Views\PlanPriorities\Create.cshtml" />
+    <Content Include="Views\PlanPriorities\Delete.cshtml" />
+    <Content Include="Views\PlanPriorities\Details.cshtml" />
+    <Content Include="Views\PlanPriorities\Edit.cshtml" />
+    <Content Include="Views\PlanPriorities\Index.cshtml" />
+    <Content Include="Views\PlanStatus\Create.cshtml" />
+    <Content Include="Views\PlanStatus\Delete.cshtml" />
+    <Content Include="Views\PlanStatus\Details.cshtml" />
+    <Content Include="Views\PlanStatus\Edit.cshtml" />
+    <Content Include="Views\PlanStatus\Index.cshtml" />
+    <Content Include="Views\PlanTypes\Create.cshtml" />
+    <Content Include="Views\PlanTypes\Delete.cshtml" />
+    <Content Include="Views\PlanTypes\Details.cshtml" />
+    <Content Include="Views\PlanTypes\Edit.cshtml" />
+    <Content Include="Views\PlanTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />

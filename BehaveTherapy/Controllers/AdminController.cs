@@ -52,7 +52,7 @@ namespace BugTracker.Controllers
         //POST: EditUser
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUser(AdminModel model)
+        public ActionResult EditUser(AdminModel model) 
         {
             //var user = dB.Users.Find(model.id);
             UserRolesHelper helper = new UserRolesHelper();
