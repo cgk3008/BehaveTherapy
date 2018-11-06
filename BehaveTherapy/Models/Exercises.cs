@@ -19,6 +19,8 @@ namespace BehaveTherapy.Models
         public DateTimeOffset? Updated { get; set; }
         public string TimeZoneCreated { get; set; }
         public DateTimeOffset? StartDate { get; set; }
+        //How do I log multiple completion dates for one exercise? they will need to repeat several times a month......Do I make a save history helper for this to track changes to database?
+        public DateTimeOffset? CompletionDate { get; set; }
         public DateTimeOffset? DeadlineDate { get; set; }
         public string AssignedToUserId { get; set; }
 
