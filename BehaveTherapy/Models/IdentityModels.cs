@@ -56,5 +56,8 @@ public DbSet<TherapyPlan> TherapyPlan { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
 
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.TherapyPlanComments> TherapyPlanComments { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

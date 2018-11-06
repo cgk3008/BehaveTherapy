@@ -78,7 +78,7 @@ namespace BehaveTherapy.Controllers
             }
 
             UserRolesHelper helper = new UserRolesHelper();
-            var therapistList = helper.ListUsersInRole("")
+            var therapistList = helper.ListUsersInRole("");
             return View(therapyPlan);
         }
 

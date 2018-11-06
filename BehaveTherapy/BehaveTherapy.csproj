@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ExercisesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TherapyPlanCommentsController.cs" />
     <Compile Include="Controllers\TherapyPlansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +214,7 @@
     <Compile Include="Models\TherapyPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TherapyPlanComments.cs" />
     <Compile Include="Models\UploadImageValidator.cs" />
     <Compile Include="Models\UserRolesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +225,11 @@
     <Content Include="Views\TherapyPlans\Details.cshtml" />
     <Content Include="Views\TherapyPlans\Edit.cshtml" />
     <Content Include="Views\TherapyPlans\Index.cshtml" />
+    <Content Include="Views\TherapyPlanComments\Create.cshtml" />
+    <Content Include="Views\TherapyPlanComments\Delete.cshtml" />
+    <Content Include="Views\TherapyPlanComments\Details.cshtml" />
+    <Content Include="Views\TherapyPlanComments\Edit.cshtml" />
+    <Content Include="Views\TherapyPlanComments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />
