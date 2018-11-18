@@ -219,6 +219,7 @@
     <Compile Include="Models\PlanPriority.cs" />
     <Compile Include="Models\PlanStatus.cs" />
     <Compile Include="Models\PlanType.cs" />
+    <Compile Include="Models\PlanIndexViewModel.cs" />
     <Compile Include="Models\TherapyPlan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -260,6 +261,7 @@
     <Content Include="Views\PlanTypes\Details.cshtml" />
     <Content Include="Views\PlanTypes\Edit.cshtml" />
     <Content Include="Views\PlanTypes\Index.cshtml" />
+    <Content Include="Views\TherapyPlans\MyTherapyPlans.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />

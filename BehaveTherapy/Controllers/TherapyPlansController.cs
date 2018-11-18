@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BehaveTherapy.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BehaveTherapy.Controllers
 {
@@ -122,6 +123,42 @@ namespace BehaveTherapy.Controllers
             db.TherapyPlan.Remove(therapyPlan);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: MyProjects
+        [Authorize]
+        public ActionResult MyTherapyPlans()
+        {
+
+            List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
+            var userId = User.Identity.GetUserId();
+            List<TherapyPlan> plans = db.Users.Find(userId).TherapyPlan.ToList();
+
+            foreach (TherapyPlan plan in plans)
+            {
+                PlanIndexViewModel vm = new PlanIndexViewModel()
+                {
+                    Plan = plan,
+                    Therapist = db.Users.Find(plan.TherapistId),
+
+                    UserId = userId
+                };
+
+                vms.Add(vm);
+            }
+            return View(vms);
+
+            //var tickets = db.Ticket.Where(t => t.Project.PmId == userId).ToList();
+            //return View(tickets.ToList());
+
+
+
+            //var userId = User.Identity.GetUserId();
+            ////return View(dB.Users.Find(userId).Ticket.ToList());
+
+            ////example from assignedProjects controller return View(dB.Users.Find(userId).Project.ToList()); can't figure out why above does not work, need to look at ticket model more compared to project model
+
+            //return View(dB.Users.Find(userId).Project.ToList());
         }
 
         protected override void Dispose(bool disposing)
