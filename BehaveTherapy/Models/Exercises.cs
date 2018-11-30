@@ -23,6 +23,8 @@ namespace BehaveTherapy.Models
         public DateTimeOffset? CompletionDate { get; set; }
         public DateTimeOffset? DeadlineDate { get; set; }
         public string AssignedToUserId { get; set; }
+        public bool IsDeleted { get; set; }
+        public string FileUrl { get; set; }
 
 
         public virtual TherapyPlan Plan { get; set; }

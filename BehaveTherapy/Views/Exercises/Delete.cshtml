@@ -1,0 +1,112 @@
+﻿@model BehaveTherapy.Models.Exercises
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Exercises</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AssignedToUser.FirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AssignedToUser.FirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Plan.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Plan.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeZoneCreated)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeZoneCreated)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CompletionDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CompletionDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeadlineDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeadlineDate)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
