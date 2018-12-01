@@ -1,51 +1,278 @@
 ﻿@model IEnumerable<BehaveTherapy.Models.TherapyPlan>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TherapistId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home 2 | Gallaxy Responsive HTML5/CSS3 Template | FIFO THEMES</title>
+    <meta name="description" content="Gallaxy Responsive HTML5/CSS3 Template from FIFOTHEMES.COM">
+    <meta name="author" content="FIFOTHEMES.COM">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,700,800,900' rel='stylesheet' type='text/css'>
+    <!-- Library CSS -->
+    <!-- CSS -->
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TherapistId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <link href="~/Assets/DataTable/datatables.css" rel="stylesheet" />
 
-</table>
+    <!-- jQuery -->
+    <script src="~/Assets/GALLAXY-HTML/Documentation/Gallaxy/assets/js/jquery.js"></script>
+
+    <!-- DataTables-->
+    <script src="~/Assets/DataTable/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/animations.css" media="screen">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/superfish.css" media="screen">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/revolution-slider/css/settings.css" media="screen">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/revolution-slider/css/extralayers.css" media="screen">
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/prettyPhoto.css" media="screen">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/style.css">
+    <!-- Skin -->
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/colors/green.css" class="colors">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/theme-responsive.css">
+    <!-- Switcher CSS -->
+    <link href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/switcher.css" rel="stylesheet">
+    <link href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/spectrum.css" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/ico/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/ico/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/ico/apple-touch-icon-144.png">
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE]>
+    <link rel="stylesheet" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/css/ie.css">
+    <![endif]-->
+</head>
+<body class="boxed home">
+    <div class="page-mask">
+        <div class="page-loader">
+            <div class="spinner"></div>
+            Loading...
+        </div>
+    </div>
+    <!-- Wrap -->
+    <div class="wrap">
+        <!-- Header -->
+        <header id="header">
+            <!-- Header Top Bar -->
+            <div class="top-bar">
+                <div class="slidedown collapse">
+                    <div class="container">
+                        <div class="pull-left">
+                            <ul class="social pull-left">
+                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="rss"><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="phone-login pull-right">
+                            <a><i class="fa fa-phone"></i> Call Us : +880 111-111-111</a>
+                            <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a>
+                            <a href="#" data-toggle="modal" data-target="#registrationModal"><i class="fa fa-edit"></i> Registration</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Header Top Bar -->
+            <!-- Main Header -->
+            <div class="main-header">
+                <div class="container">
+                    <!-- TopNav -->
+                    <div class="topnav navbar-header">
+                        <a class="navbar-toggle down-button" data-toggle="collapse" data-target=".slidedown">
+                            <i class="fa fa-angle-down icon-current"></i>
+                        </a>
+                    </div>
+                    <!-- /TopNav-->
+                    <!-- Logo -->
+                    <div class="logo pull-left">
+                        <h1>
+                            <a href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/index.html">
+                                <img class="logo-color" src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/img/logos/logo_green.png" alt="gallaxy" width="160" height="60">
+                            </a>
+                        </h1>
+                    </div>
+                    <!-- /Logo -->
+                    <!-- Mobile Menu -->
+                    <div class="mobile navbar-header">
+                        <a class="navbar-toggle" data-toggle="collapse" href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/.navbar-collapse">
+                            <i class="fa fa-bars fa-2x"></i>
+                        </a>
+                    </div>
+                    <!-- /Mobile Menu -->
+                    <!-- Menu Start -->
+                    <nav class="collapse navbar-collapse menu">
+                        <ul class="nav navbar-nav sf-menu">
+                            <li>
+                                <a id="current" href="#">
+                                    Home
+                                    <span class="sf-sub-indicator">
+                                        <i class="fa fa-angle-down "></i>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li><a href="~/Home/Index" class="sf-with-ul">Home </a></li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" class="sf-with-ul">
+                                    Blog
+                                    <span class="sf-sub-indicator">
+                                        <i class="fa fa-angle-down "></i>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li><a href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/blog-left-sidebar.html" class="sf-with-ul">Left Sidebar Blog</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Contact
+                                    <span class="sf-sub-indicator">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li><a href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/contact.html" class="sf-with-ul">Contact</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /Menu -->
+                </div>
+            </div>
+            <!-- /Main Header -->
+        </header>
+        <!-- /Header -->
+
+
+
+
+
+
+
+
+
+
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+
+        <div class="table-responsive">
+            <table id="mytable" class="dataTables">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Created)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TherapistId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsDeleted)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+
+
+
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Created)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TherapistId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsDeleted)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+
+            <!-- The Scripts -->
+
+            <script>
+                $('#mytable').DataTable();
+            </script>
+
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-migrate-1.0.0.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-ui.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/bootstrap.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.parallax.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.wait.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/fappear.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/modernizr-2.6.2.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.bxslider.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.prettyPhoto.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/superfish.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tweetMachine.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tytabs.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.gmap.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.sticky.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.countTo.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jflickrfeed.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/imagesloaded.pkgd.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/waypoints.min.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/wow.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.fitvids.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/spectrum.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/switcher.js"></script>
+            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/custom.js"></script>
+
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+</body>
+</html>

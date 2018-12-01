@@ -211,6 +211,7 @@
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\Exercises.cs" />
     <Compile Include="Models\Extensions.cs" />
+    <Compile Include="Models\Helper\Extension.cs" />
     <Compile Include="Models\Helper\OldNewTherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\TherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\ExerciseHelper.cs" />

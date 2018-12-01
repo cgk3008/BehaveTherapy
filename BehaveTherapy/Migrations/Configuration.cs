@@ -148,6 +148,24 @@ namespace BehaveTherapy.Migrations
             }
 
 
+            if (!context.TherapyPlan.Any( t => t.Name == "Group 1"))
+            {
+                var tp = new TherapyPlan
+                {
+                    Name = "Group 1",
+                    Created = DateTime.Now,
+                    TherapistId = "d24cfa8e-36c0-441e-8454-cb68b349689d",
+                    IsDeleted = false,
+                    AssignedToUserId = "0ab23451-4ff1-4f7b-9714-19a081b96965"
+                };
+
+                context.TherapyPlan.Add(new TherapyPlan { Name = "Group 1" });
+
+                
+            }
+
+
+
 
             //if (!context.Priority.Any(u => u.Name == "Urgent"))
             //{ context.Priority.Add(new PlanPriority { Name = "Urgent" }); }

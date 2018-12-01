@@ -14,6 +14,7 @@ namespace BehaveTherapy.Models
         public DateTimeOffset Created { get; set; }
         public string TherapistId { get; set; }
         public bool IsDeleted { get; set; }
+        public string AssignedToUserId { get; set; }
 
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
