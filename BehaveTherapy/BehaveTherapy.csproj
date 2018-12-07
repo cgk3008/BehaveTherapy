@@ -200,6 +200,7 @@
     <Compile Include="Controllers\TherapyPlanCommentsController.cs" />
     <Compile Include="Controllers\TherapyPlanHistoriesController.cs" />
     <Compile Include="Controllers\TherapyPlansController.cs" />
+    <Compile Include="Controllers\VideoFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +230,7 @@
     <Compile Include="Models\TherapyPlanHistory.cs" />
     <Compile Include="Models\UploadImageValidator.cs" />
     <Compile Include="Models\UserRolesHelper.cs" />
+    <Compile Include="Models\VideoFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <None Include="Views\Account\ResendEmailConfirmation.cshtml" />
@@ -1859,6 +1861,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="UploadVideo\" />
     <Folder Include="Views\Default\" />
+    <Folder Include="Views\VideoFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

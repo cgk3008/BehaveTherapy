@@ -50,7 +50,7 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId")] Exercises exercises, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
