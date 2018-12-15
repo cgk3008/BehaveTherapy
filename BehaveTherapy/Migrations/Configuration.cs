@@ -65,7 +65,7 @@ namespace BehaveTherapy.Migrations
                 var user = new ApplicationUser
 
                 {
-                    UserName = "cliffkoenig",
+                    UserName = "cgk3008.ck@gmail.com",
                     Email = "cgk3008.ck@gmail.com",
                     FirstName = "Cliff",
                     LastName = "Koenig",
@@ -88,7 +88,7 @@ namespace BehaveTherapy.Migrations
                 var user = new ApplicationUser
 
                 {
-                    UserName = "rachelhoover",
+                    UserName = "rhoov25@gmail.com",
                     Email = "rhoov25@gmail.com",
                     FirstName = "Rachel",
                     LastName = "Hoover",
