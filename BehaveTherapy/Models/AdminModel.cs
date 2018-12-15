@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Models
+namespace BehaveTherapy.Models
 {
     public class AdminModel
     {
@@ -21,6 +21,5 @@ namespace BugTracker.Models
     }
 
 
-    //public ActionResult
 }
 

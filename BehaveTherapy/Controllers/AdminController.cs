@@ -1,6 +1,7 @@
 ﻿using BehaveTherapy.Models;
 using BehaveTherapy.Models.Helper;
-using BugTracker.Models;
+using BehaveTherapy.Models;
+using BehaveTherapy.Models.Helper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BugTracker.Controllers
+namespace BehaveTherapy.Controllers
 {
     public class AdminController : Controller
     {

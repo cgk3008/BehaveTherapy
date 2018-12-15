@@ -92,14 +92,27 @@
             </div>
         </div>
 
+        @if (User.IsInRole("Therapist") || User.IsInRole("Admin"))
+        {
         <div class="form-group">
+            @Html.LabelFor(model => model.TherapistId, "Therapist ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TherapistId", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.TherapistId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        }
+
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.AssignedToUserId, "Assign Client", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("AssignedToUserId", null, new { @class = "form-control" })
 
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         @*<div class="form-group">
 
@@ -131,7 +144,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DeadlineDate, "Deadline Date", new { @class = "control-label col-md-2" })
             <div class="col-md-4">
-             
+
 
 
                 <div class='input-group date' id='datetimepicker3'>

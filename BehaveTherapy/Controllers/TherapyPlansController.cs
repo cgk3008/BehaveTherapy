@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BehaveTherapy.Models;
-using BugTracker.Models.Helper;
+using BehaveTherapy.Models.Helper;
 using Microsoft.AspNet.Identity;
 
 namespace BehaveTherapy.Controllers
@@ -104,7 +104,7 @@ namespace BehaveTherapy.Controllers
                 return HttpNotFound();
             }
 
-            Models.UserRolesHelper helper = new Models.UserRolesHelper();
+            UserRolesHelper helper = new UserRolesHelper();
             var therapistList = helper.ListUsersInRole("");
             return View(therapyPlan);
         }

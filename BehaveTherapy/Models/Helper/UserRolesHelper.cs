@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace BugTracker.Models.Helper
+namespace BehaveTherapy.Models.Helper
 {
     public class UserRolesHelper
     {

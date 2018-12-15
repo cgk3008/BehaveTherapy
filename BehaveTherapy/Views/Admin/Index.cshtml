@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BehaveTherapy.Models.AdminIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop blue"></i> Admin User Role Index</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <table id="mytable" class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            User Name
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+                    @foreach (var mod in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p>@mod.User.FullName | @Html.ActionLink("Edit Roles", "EditUser", new { id = mod.User.Id })</p>
+                            </td>
+
+                            <td>
+                                @foreach (var role in mod.Roles)
+                                {
+                                    @role
+                                }
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+
+
+            <script>
+				$('#mytable').DataTable();
+            </script>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

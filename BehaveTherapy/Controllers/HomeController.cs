@@ -12,7 +12,7 @@ namespace BehaveTherapy.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[Authorize]
+        [Authorize]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
@@ -46,5 +46,16 @@ namespace BehaveTherapy.Controllers
 
             return View();
         }
+
+
+        //public ActionResult DemoLogin()
+        //{
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        //public ActionResult LP()
+        //{
+        //    return View();
+        //}
     }
 }

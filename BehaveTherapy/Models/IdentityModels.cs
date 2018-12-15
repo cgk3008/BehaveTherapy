@@ -40,7 +40,7 @@ namespace BehaveTherapy.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
 
-            userIdentity.AddClaim(new Claim("Name", FullName));
+           // userIdentity.AddClaim(new Claim("Name", FullName));
 
             return userIdentity;
         }
