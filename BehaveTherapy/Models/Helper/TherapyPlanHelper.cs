@@ -49,6 +49,17 @@ namespace BehaveTherapy.Models.Helper
             return dB.TherapyPlan.Find(therapyPlanId).Users.ToList();
         }
 
+        ////List users-clients under therapistId
+        //public ICollection<string> ListUsersUnderTherapistId(string userId, string therapistId)
+        //{
+        //    var user = dB.Users.Find(userId);
+
+        //    var therapist = dB.user
+
+
+        //    return dB.;
+        //}
+
         public ICollection<ApplicationUser> ListPmForTherapyPlan(int therapyPlanId)
             //do i need to User above to "string"?
         {
@@ -140,6 +151,8 @@ namespace BehaveTherapy.Models.Helper
             }
             return usersNotProj;
         }
+
+      
 
     }
 }

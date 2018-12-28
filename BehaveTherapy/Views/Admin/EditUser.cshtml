@@ -1,6 +1,8 @@
 ﻿@model BehaveTherapy.Models.AdminModel
 @{
-    ViewBag.Title = "EditUser";
+    //ViewBag.Title = "EditUser";
+
+    Layout = null;
 }
 <div class="main-content">
     <div class="container">
@@ -26,6 +28,13 @@
 
 
                 @Html.HiddenFor(m => m.User.Id)
+
+
+            <h3> @Model.User.FullName;</h3>
+
+            <br />
+
+                
 
 
 

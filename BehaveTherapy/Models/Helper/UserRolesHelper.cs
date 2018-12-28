@@ -55,6 +55,28 @@ namespace BehaveTherapy.Models.Helper
             return roleUsers;
         }
 
+        public ICollection<ApplicationUser> ListMyClients(string Role, string UserId)
+        {
+            List<ApplicationUser> myClients = new List<ApplicationUser>();
+            List<ApplicationUser> users = userManager.Users.ToList();
+
+
+
+            foreach (var c in users)
+            {
+                if (IsUserInRole(c.Id, Role) )
+                    {
+
+                    myClients.Add(c);
+                }
+            }
+
+           // TherapyPlan plans = dB.TherapyPlan.Where(t => t.TherapistId == UserId).ToList();
+
+            return myClients;
+
+        }
+
 
         public bool AddUserToRole(string UserId, string Role)
         {

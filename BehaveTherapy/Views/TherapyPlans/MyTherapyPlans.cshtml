@@ -28,21 +28,30 @@
 
             <h3>
                 @if (User.IsInRole("Admin") || User.IsInRole("Therapist"))
-                {
-                    @Html.ActionLink("Create New Plan", "Create", null, new { @class = "btn btn-success" })
-                    <br />
-                    <br />
-                }
+        {
+            @Html.ActionLink("Create New Plan", "Create", null, new { @class = "btn btn-success" })
+            <br />
+            <br />
+}
             </h3>
 
             <h3>
                 @if (User.IsInRole("Admin") || User.IsInRole("Therapist"))
-    {
+        {
             @Html.ActionLink("Create New Exercise", "Create", "Exercise", new { @class = "btn btn-success" })
             <br />
             <br />
 }
             </h3>
+
+            @*<h3>
+                @if (User.IsInRole("Admin") || User.IsInRole("Therapist"))
+        {
+            @Html.ActionLink("Register New Client", "Register", "AccountView", new { @class = "btn btn-success" })
+            <br />
+            <br />
+}
+            </h3>*@
 
             <table id="mytable" class="dataTables">
                 <thead>
@@ -55,54 +64,54 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    {
-                        if (item.Plan.IsDeleted == false)
+            {
+                if (item.Plan.IsDeleted == false)
+                {
+                    <tr>
+                        <td>
+
+                            @Html.DisplayFor(modelItem => item.Plan.Name) | PM: @Html.DisplayFor(modelItem => item.Therapist.FullName)
+
+                            <ul>
+                                @foreach (var u in item.Plan.Users)
                         {
-                            <tr>
-                                <td>
+                            <li>
+                                @u.FullName
+                                @if (User.IsInRole("Admin") || User.IsInRole("Therapist"))
+                        {
+                            @Html.ActionLink("Remove User", "RemoveUser", "AdminPlans", new { id = item.Plan.Id, userId = u.Id }, new { @class = "btn-xs btn-warning", type = "button" })
+                }
+                            </li>
+                }
+                            </ul>
 
-                                    @Html.DisplayFor(modelItem => item.Plan.Name) | PM: @Html.DisplayFor(modelItem => item.Therapist.FullName)
+                        </td>
+                        <td>
 
-                                    <ul>
-                                        @foreach (var u in item.Plan.Users)
-                                        {
-                                            <li>
-                                                @u.FullName
-                                                @if (User.IsInRole("Admin") || User.IsInRole("Therapist"))
-                                                {
-                                                    @Html.ActionLink("Remove User", "RemoveUser", "AdminPlans", new { id = item.Plan.Id, userId = u.Id }, new { @class = "btn-xs btn-warning", type = "button" })
-                                                }
-                                            </li>
-                                        }
-                                    </ul>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Plan Manager"))
+                    {
+                        @Html.ActionLink("Add User to Plan", "AddToPlan", "AdminPlans", new { id = item.Plan.Id }, null) <text>|</text>
 
-                                </td>
-                                <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })
+                        <text> | </text>
+            }
+                            @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
 
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Plan Manager"))
-                                    {
-                                        @Html.ActionLink("Add User to Plan", "AddToPlan", "AdminPlans", new { id = item.Plan.Id }, null) <text>|</text>
+                            @if (User.IsInRole("Admin"))
+                    {
 
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })
-                                        <text> | </text>
-                                    }
-                                    @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
-
-                                    @if (User.IsInRole("Admin"))
-                                    {
-
-                                        <text>|</text>@Html.ActionLink("Delete", "Delete", new { id = item.Plan.Id })
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    }
+                        <text>|</text>@Html.ActionLink("Delete", "Delete", new { id = item.Plan.Id })
+            }
+                        </td>
+                    </tr>
+        }
+    }
 
                 </tbody>
             </table>
 
             <script>
-				$('#mytable').DataTable();
+                $('#mytable').DataTable();
             </script>
         </div>
     </div>

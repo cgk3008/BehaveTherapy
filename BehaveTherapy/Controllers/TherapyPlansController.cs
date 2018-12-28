@@ -37,24 +37,33 @@ namespace BehaveTherapy.Controllers
             return View(therapyPlan);
         }
 
+
+
+       
+
         // GET: TherapyPlans/Create
         public ActionResult Create()
         {
-            //var userId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();
 
             //Models.UserRolesHelper helper = new Models.UserRolesHelper();
 
 
             //// really I need a list of my clients!!!!!  so that is role client and therapistId == user.Id
             ////Therapist needs to create client account with basic information, first name, last name, email address.  Then on account creation, an email is sent to client asking them to register themselves and add any additional information......
-            //var users = helper.ListUsersInRole("Client").ToList();
 
-            ////var my clients = users.Where(c => c.TherapyPlan == userId).ToList();
+            TherapyPlanHelper planHelper = new TherapyPlanHelper();
 
-            //TherapyPlanHelper planHelper = new TherapyPlanHelper();
-            //var planlist = planHelper.ListTherapyPlansForUser(userId);
+            UserRolesHelper userRoles = new UserRolesHelper();
 
-            //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FullName");
+            var clients = userRoles.ListUsersInRole("Client").ToList();
+
+            //var my clients = users.Where(c => c.TherapyPlan == userId).ToList();
+
+            
+            var planlist = planHelper.ListTherapyPlansForUser(userId);
+
+            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FullName");
 
             return View();
         }
@@ -90,6 +99,8 @@ namespace BehaveTherapy.Controllers
             // this is for the admin to add and remove users to projects etc.,  I guess we would have to do that, but if app gets popular, then we may want this automated for quicker setup!!!!
         
         }
+
+
 
         // GET: TherapyPlans/Edit/5
         public ActionResult Edit(int? id)
