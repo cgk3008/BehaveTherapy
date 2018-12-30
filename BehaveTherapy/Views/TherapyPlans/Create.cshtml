@@ -72,10 +72,12 @@
 
     @using (Html.BeginForm())
     {
-        @Html.AntiForgeryToken()
+        if (User.IsInRole("Therapist") || User.IsInRole("Admin"))
+        {
+            @Html.AntiForgeryToken()   
 
     <div class="form-horizontal">
-        <h4>TherapyPlan</h4>
+        <h4>Create Therapy Plan</h4>
         <hr />
 
 
@@ -83,38 +85,26 @@
 
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.IsDeleted)
+
+        @Html.HiddenFor(model => model.TherapistId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, "Plan Title", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @if (User.IsInRole("Therapist") || User.IsInRole("Admin"))
-        {
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, "Therapist Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.DropDownList("TherapistName", null, new { @class = "form-control" })*@
-
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        }
-
-
-        @*<div class="form-group">
             @Html.LabelFor(model => model.AssignedToUserId, "Assign Client", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AssignedToUserId", null, new { @class = "form-control" })
+                @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         @*<div class="form-group">
 
@@ -178,42 +168,42 @@
             </div>
         </div>
     </div>
-            }
+        }
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-migrate-1.0.0.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-ui.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/bootstrap.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.parallax.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.wait.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/fappear.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/modernizr-2.6.2.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.bxslider.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.prettyPhoto.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/superfish.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tweetMachine.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tytabs.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.gmap.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.sticky.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.countTo.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jflickrfeed.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/imagesloaded.pkgd.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/waypoints.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/wow.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.fitvids.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/spectrum.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/switcher.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/custom.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-migrate-1.0.0.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-ui.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/bootstrap.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.parallax.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.wait.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/fappear.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.bxslider.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/superfish.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tweetMachine.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tytabs.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.gmap.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.sticky.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.countTo.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jflickrfeed.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/waypoints.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/wow.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.fitvids.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/spectrum.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/switcher.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/custom.js"></script>
 
 
 
-            Is Script.Render below needed?
+    Is Script.Render below needed ?
 
 
 

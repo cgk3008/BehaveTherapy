@@ -73,5 +73,7 @@ public DbSet<TherapyPlan> TherapyPlan { get; set; }
         public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanStatus> PlanStatus { get; set; }
 
         public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanType> PlanTypes { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.Plan> Plans { get; set; }
     }
 }

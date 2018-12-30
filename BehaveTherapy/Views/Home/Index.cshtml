@@ -131,16 +131,16 @@
 
                             <li>
                                 <a href="#" class="sf-with-ul">
-                                    Blog
+                                    Action Links
                                     <span class="sf-sub-indicator">
                                         <i class="fa fa-angle-down "></i>
                                     </span>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="~/Views/Admin/Index.cshtml">~/Views/Admin/Index.cshtml</a>
-                                        <a href="~/Admin/Index.cshtml">~/Admin/Index.cshtml</a>
-                                        <a href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/blog-left-sidebar.html" class="sf-with-ul">Left Sidebar Blog</a>
+                                        <a @Html.ActionLink("Admin Index", "Index", "Admin")</a>
+                                        <a @Html.ActionLink("Create Therapy Plan", "Create", "TherapyPlans")</a>
+                                        <a @Html.ActionLink("Create Therapy Plan", "Create", "Plans")</a>
                                     </li>
                                 </ul>
                             </li>

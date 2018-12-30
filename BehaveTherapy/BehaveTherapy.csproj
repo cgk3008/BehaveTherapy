@@ -196,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlanPrioritiesController.cs" />
+    <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Controllers\PlanStatusController.cs" />
     <Compile Include="Controllers\PlanTypesController.cs" />
     <Compile Include="Controllers\TherapyPlanCommentsController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Models\Helper\TherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\ExerciseHelper.cs" />
     <Compile Include="Models\Helper\UserRolesHelper.cs" />
+    <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\PlanNotifications.cs" />
     <Compile Include="Models\PlanPriority.cs" />
     <Compile Include="Models\PlanStatus.cs" />
@@ -298,6 +300,11 @@
     <Content Include="Views\PlanTypes\Edit.cshtml" />
     <Content Include="Views\PlanTypes\Index.cshtml" />
     <Content Include="Views\TherapyPlans\MyTherapyPlans.cshtml" />
+    <Content Include="Views\Plans\Create.cshtml" />
+    <Content Include="Views\Plans\Delete.cshtml" />
+    <Content Include="Views\Plans\Details.cshtml" />
+    <Content Include="Views\Plans\Edit.cshtml" />
+    <Content Include="Views\Plans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />

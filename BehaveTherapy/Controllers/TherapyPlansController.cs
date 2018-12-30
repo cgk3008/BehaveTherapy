@@ -52,7 +52,7 @@ namespace BehaveTherapy.Controllers
             //// really I need a list of my clients!!!!!  so that is role client and therapistId == user.Id
             ////Therapist needs to create client account with basic information, first name, last name, email address.  Then on account creation, an email is sent to client asking them to register themselves and add any additional information......
 
-            TherapyPlanHelper planHelper = new TherapyPlanHelper();
+            //TherapyPlanHelper planHelper = new TherapyPlanHelper();
 
             UserRolesHelper userRoles = new UserRolesHelper();
 
@@ -60,10 +60,10 @@ namespace BehaveTherapy.Controllers
 
             //var my clients = users.Where(c => c.TherapyPlan == userId).ToList();
 
-            
-            var planlist = planHelper.ListTherapyPlansForUser(userId);
+            //below line will be used for MyTherapyPlans list/index of plans
+            //var planlist = planHelper.ListTherapyPlansForUser(userId);
 
-            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FullName");
+            ViewBag.AssignedToUserId = new SelectList(clients, "Id", "FullName");
 
             return View();
         }
@@ -72,14 +72,17 @@ namespace BehaveTherapy.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        //[Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Created,TherapistId, AssignedToUserId, IsDeleted")] TherapyPlan therapyPlan)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+
             if (ModelState.IsValid)
             {
                 // oh man, gotta add a lot more parameters to model and below.  Frequency! , deadline, should I add this on plan creation, or edit the plan with exercises added with deadline, frequency etc.?????  Edit plan and add exercises which ties an exercise to the plan and the plan designates the frequency and due dates.....???? Yeah, bit different than bug tracker.....
-                therapyPlan.TherapistId = User.Identity.GetUserId();
-                //therapyPlan.AssignedToUserId = 
+                therapyPlan.TherapistId = User.Identity.GetUserId();   
+
                 therapyPlan.Created = DateTime.Now;
                 therapyPlan.IsDeleted = false;
                 db.TherapyPlan.Add(therapyPlan);
@@ -93,11 +96,11 @@ namespace BehaveTherapy.Controllers
             //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FullName", therapyPlan.AssignedToUserId);
 
 
-            return View(therapyPlan); 
+            //return View(therapyPlan); 
             //SO bug tracker has below code
-            //return RedirectToAction("Index", "AdminProjects");
+            return RedirectToAction("Index", "TherapyPlans");
             // this is for the admin to add and remove users to projects etc.,  I guess we would have to do that, but if app gets popular, then we may want this automated for quicker setup!!!!
-        
+
         }
 
 

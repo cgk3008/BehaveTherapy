@@ -10,6 +10,7 @@ namespace BehaveTherapy.Models
     {
         public TherapyPlan Plan { get; set; }
         public ApplicationUser Therapist { get; set; }
+        public ApplicationUser AssignedToUser { get; set; }
         //public User UserId { get; set; }
         public string UserId { get; set; }
     }
