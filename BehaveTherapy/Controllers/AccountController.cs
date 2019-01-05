@@ -139,7 +139,7 @@ namespace BehaveTherapy.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            //add searchable list of therapists
+            //add searchable list of therapists?
             return View();
         }
 

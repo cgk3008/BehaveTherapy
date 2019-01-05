@@ -147,6 +147,13 @@ namespace BehaveTherapy.Controllers
             return RedirectToAction("Index");
         }
 
+        //Get: Plans/AddClient
+        //public ActionResult AssignClient()
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

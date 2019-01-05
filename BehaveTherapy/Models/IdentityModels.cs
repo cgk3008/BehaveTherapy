@@ -15,7 +15,8 @@ namespace BehaveTherapy.Models
         public string DisplayName { get; set; }
         public string FullName { get; set; }
 
-        public virtual ICollection<TherapyPlan> TherapyPlan {get; set;}
+        //public virtual ICollection<TherapyPlan> TherapyPlan {get; set;}
+        public virtual ICollection<Plan> Plan { get; set; }
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
         public virtual ICollection<TherapyPlanComments> Comment { get; set; }        
@@ -24,7 +25,8 @@ namespace BehaveTherapy.Models
 
         public ApplicationUser()
         {
-            TherapyPlan = new HashSet<TherapyPlan>();
+            //TherapyPlan = new HashSet<TherapyPlan>();
+            Plan = new HashSet<Plan>();
             Exercises = new HashSet<Exercises>();
             PlanNotifications = new HashSet<PlanNotifications>();
             Comment = new HashSet<TherapyPlanComments>();
@@ -40,7 +42,7 @@ namespace BehaveTherapy.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
 
-           // userIdentity.AddClaim(new Claim("Name", FullName));
+            userIdentity.AddClaim(new Claim("Name", FullName));
 
             return userIdentity;
         }
@@ -58,7 +60,7 @@ namespace BehaveTherapy.Models
             return new ApplicationDbContext();
         }
 
-public DbSet<TherapyPlan> TherapyPlan { get; set; }
+//public DbSet<TherapyPlan> TherapyPlan { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
 

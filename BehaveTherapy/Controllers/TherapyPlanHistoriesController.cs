@@ -39,7 +39,7 @@ namespace BehaveTherapy.Controllers
         // GET: TherapyPlanHistories/Create
         public ActionResult Create()
         {
-            ViewBag.TherapyPlanId = new SelectList(db.TherapyPlan, "Id", "Name");
+            ViewBag.TherapyPlanId = new SelectList(db.Plans, "Id", "Name");
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
@@ -58,7 +58,7 @@ namespace BehaveTherapy.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TherapyPlanId = new SelectList(db.TherapyPlan, "Id", "Name", therapyPlanHistory.TherapyPlanId);
+            ViewBag.TherapyPlanId = new SelectList(db.Plans, "Id", "Name", therapyPlanHistory.TherapyPlanId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", therapyPlanHistory.UserId);
             return View(therapyPlanHistory);
         }
@@ -75,7 +75,7 @@ namespace BehaveTherapy.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TherapyPlanId = new SelectList(db.TherapyPlan, "Id", "Name", therapyPlanHistory.TherapyPlanId);
+            ViewBag.TherapyPlanId = new SelectList(db.Plans, "Id", "Name", therapyPlanHistory.TherapyPlanId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", therapyPlanHistory.UserId);
             return View(therapyPlanHistory);
         }
@@ -93,7 +93,7 @@ namespace BehaveTherapy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TherapyPlanId = new SelectList(db.TherapyPlan, "Id", "Name", therapyPlanHistory.TherapyPlanId);
+            ViewBag.TherapyPlanId = new SelectList(db.Plans, "Id", "Name", therapyPlanHistory.TherapyPlanId);
             ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", therapyPlanHistory.UserId);
             return View(therapyPlanHistory);
         }

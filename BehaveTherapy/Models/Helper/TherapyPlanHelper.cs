@@ -12,11 +12,11 @@ namespace BehaveTherapy.Models.Helper
 
         private ApplicationDbContext dB = new ApplicationDbContext();
 
-        public Exception AddUserToTherapyPlan(string userId, int therapyPlanId)
+        public Exception AddUserToTherapyPlan(string userId, int planId)
         {
             try
             {
-                var prj = dB.TherapyPlan.Find(therapyPlanId);
+                var prj = dB.Plans.Find(planId);
                 var usr = dB.Users.Find(userId);
                 prj.Users.Add(usr); /*why didn't this work with prj.Users.Add(str);*/
                 dB.SaveChanges();
@@ -28,11 +28,11 @@ namespace BehaveTherapy.Models.Helper
             }
         }
 
-        public Exception RemoveUserFromTherapyPlan(string userId, int therapyPlanId)
+        public Exception RemoveUserFromTherapyPlan(string userId, int planId)
         {
             try
             {
-                var prj = dB.TherapyPlan.Find(therapyPlanId);
+                var prj = dB.Plans.Find(planId);
                 var usr = dB.Users.Find(userId);
                 prj.Users.Remove(usr);
                 dB.SaveChanges();
@@ -44,9 +44,9 @@ namespace BehaveTherapy.Models.Helper
             }
         }
 
-        public ICollection<ApplicationUser> ListUsersOnTherapyPlan(int therapyPlanId)
+        public ICollection<ApplicationUser> ListUsersOnTherapyPlan(int planId)
         {
-            return dB.TherapyPlan.Find(therapyPlanId).Users.ToList();
+            return dB.Plans.Find(planId).Users.ToList();
         }
 
         ////List users-clients under therapistId
@@ -60,17 +60,17 @@ namespace BehaveTherapy.Models.Helper
         //    return dB.;
         //}
 
-        public ICollection<ApplicationUser> ListPmForTherapyPlan(int therapyPlanId)
+        public ICollection<ApplicationUser> ListPmForTherapyPlan(int planId)
             //do i need to User above to "string"?
         {
-            var therapist = dB.TherapyPlan.Find(therapyPlanId).TherapistId;
+            var therapist = dB.Plans.Find(planId).TherapistId;
             var usr = dB.Users.Find(therapist).FullName;
             //dB.Users.Find(therapist).FullName;
 
             return null;
         }
 
-        public ICollection<TherapyPlan> ListTherapyPlansForUser(string userId)
+        public ICollection<Plan> ListTherapyPlansForUser(string userId)
         {
 
             //var isnotdeleted = dB.TherapyPlan.Where(p => p.IsDeleted == false).ToList();
@@ -82,7 +82,7 @@ namespace BehaveTherapy.Models.Helper
             //    therapyPlans.
             //}
 
-            return dB.Users.Find(userId).TherapyPlan.ToList();
+            return dB.Users.Find(userId).Plan.ToList();
 
             //all this code simplified above
             //var usr = dB.Users.Find(userId);
@@ -110,11 +110,11 @@ namespace BehaveTherapy.Models.Helper
 
 
         //IsUserOnTherapyPlan
-        public bool IsUserOnTherapyPlan(string userId, int therapyPlanId)
+        public bool IsUserOnTherapyPlan(string userId, int planId)
         {
             try
             {
-                var prj = dB.TherapyPlan.Find(therapyPlanId);
+                var prj = dB.Plans.Find(planId);
                 var usr = dB.Users.Find(userId);
                 //prj.User.Find(usr);
 
@@ -137,14 +137,14 @@ namespace BehaveTherapy.Models.Helper
 
         //UserNotOnTherapyPlan(edited)
 
-        public ICollection<string> ListUsersNotOnTherapyPlan(int therapyPlanId)
+        public ICollection<string> ListUsersNotOnTherapyPlan(int planId)
         {
             List<string> usersNotProj = new List<string>();
             var users = dB.Users;
 
             foreach (var u in users)
             {
-                if (!IsUserOnTherapyPlan(u.Id, therapyPlanId))
+                if (!IsUserOnTherapyPlan(u.Id, planId))
                 {
                     usersNotProj.Add(u.DisplayName);
                 }

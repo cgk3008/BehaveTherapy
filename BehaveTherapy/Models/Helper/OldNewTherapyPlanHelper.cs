@@ -28,7 +28,7 @@ namespace BehaveTherapy.Models.Helper
 
         public static string ProjectPmName(int id)
         {
-            return dB.TherapyPlan.FirstOrDefault(t => t.Id == id).Name;
+            return dB.Plans.FirstOrDefault(t => t.Id == id).Name;
 
         }
     }

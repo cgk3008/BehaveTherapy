@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BehaveTherapy.Controllers
 {
@@ -67,6 +69,52 @@ namespace BehaveTherapy.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        ////Get: CreateUser
+        //public ActionResult CreateUser()
+        //{
+
+
+        //    return View();
+        //}
+
+        //// POST: /CreateUser
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> CreateUser(AdminModel model)
+        //{
+
+
+
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser { UserName = model.User.Email, Email = model.User.Email, FullName = model.User.FullName, };
+        //        var result = await UserManager.CreateAsync(user, model.User.PasswordHash);
+        //        if (result.Succeeded)
+        //        {
+        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+        //            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account 
+
+        //            //  add if user email equals allowed email in therapist list then add    UserManager.AddToRole(user.Id, "Therapist");
+
+        //            UserManager.AddToRole(user.Id, "Client");
+
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        AddErrors(result);
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
 
         //GET: Users not in role

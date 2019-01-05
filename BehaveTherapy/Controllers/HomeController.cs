@@ -17,7 +17,7 @@ namespace BehaveTherapy.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            var userPlans = db.TherapyPlan.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
+            var userPlans = db.Plans.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
             var userExercises = db.Exercises.Where(n => n.AssignedToUserId == userId).ToList();
             //var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
 
@@ -25,7 +25,7 @@ namespace BehaveTherapy.Controllers
 
             DashboardViewModel model = new DashboardViewModel()
             {
-                Plans = userPlans,
+                //Plans = userPlans,
                 //PlanNotifications = userPlanNotifications,
                 Exercises = userExercises
             };

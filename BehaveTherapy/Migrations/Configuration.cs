@@ -148,7 +148,7 @@ namespace BehaveTherapy.Migrations
             }
 
 
-            if (!context.TherapyPlan.Any( t => t.Name == "Group 1"))
+            if (!context.Plans.Any( t => t.Name == "Group 1"))
             {
                 var tp = new TherapyPlan
                 {
@@ -159,7 +159,7 @@ namespace BehaveTherapy.Migrations
                     AssignedToUserId = "0ab23451-4ff1-4f7b-9714-19a081b96965"
                 };
 
-                context.TherapyPlan.Add(new TherapyPlan { Name = "Group 1" });
+                context.Plans.Add(new Plan { Name = "Group 1" });
 
                 
             }
