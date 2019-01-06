@@ -19,8 +19,23 @@ namespace BehaveTherapy.Controllers
         // GET: Plans
         public ActionResult Index()
         {
+            //List<PlanIndexViewModel> model = new List<PlanIndexViewModel>();
+            ////UserRolesHelper helper = new UserRolesHelper();
+
+            //foreach (var User in db.Users)
+            //{
+            //    PlanIndexViewModel vm = new PlanIndexViewModel();
+            //    //vm.Plan = plan;
+            //    vm.Therapist = User;
+            //    vm.AssignedToUser = User;
+            //    model.Add(vm);
+            //}
+            //return View(model);
+
+
 
             return View(db.Plans.ToList());
+
             //List<PlanIndexViewModel> pmodel = new List<PlanIndexViewModel>();
             //var userId = User.Identity.GetUserId();
             //var plans = db.Plans.ToList();

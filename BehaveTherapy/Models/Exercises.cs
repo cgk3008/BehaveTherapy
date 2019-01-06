@@ -27,8 +27,8 @@ namespace BehaveTherapy.Models
         public string FileUrl { get; set; }
 
 
-        public virtual TherapyPlan Plan { get; set; }
-        public virtual TherapyPlan TherapistId { get; set; }
+        public virtual Plan Plan { get; set; }
+        public virtual Plan TherapistId { get; set; }
         public virtual ApplicationUser AssignedToUser { get; set; }
 
 
