@@ -65,7 +65,7 @@ namespace BehaveTherapy.Models
     public class RegisterViewModel
     {
 
-        //[Required]
+        [Required]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
