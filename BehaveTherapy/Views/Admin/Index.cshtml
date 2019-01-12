@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<BehaveTherapy.Models.AdminIndexViewModel>
 
 @{
-    //ViewBag.Title = "Admin - Index";
+    ViewBag.Title = "Admin - Index";
 
-    Layout = null;
+    //Layout = null;
 
 }
 
@@ -63,7 +63,7 @@
 
 
             <script>
-				$('#mytable').DataTable();
+                $('#mytable').DataTable();
             </script>
 
 
@@ -73,7 +73,12 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+@*
+        tHIS WAS CAUSING MY LAYOUT SHEET NOT TO RENDER THE NAVBAR, COUPLED WITH NOT HAVING 	@RenderBody() in Layout sheet!!!!
+
+        @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
 
