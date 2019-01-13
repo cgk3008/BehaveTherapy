@@ -39,11 +39,11 @@ namespace BehaveTherapy.Migrations
                 manager.Create(role);
             }
 
-            //if (!context.Roles.Any(r => r.Name == "Developer"))
-            //{
-            //    role = new IdentityRole { Name = "Developer" };
-            //    manager.Create(role);
-            //}
+            if (!context.Roles.Any(r => r.Name == "CompanyAdmin"))
+            {
+                role = new IdentityRole { Name = "CompanyAdmin" };
+                manager.Create(role);
+            }
 
             if (!context.Roles.Any(r => r.Name == "Client"))
             {
@@ -147,10 +147,32 @@ namespace BehaveTherapy.Migrations
                     });
             }
 
+            if (!context.Users.Any(u => u.Email == "craig228800@gmail.com"))
+            {
+                var user = new ApplicationUser
+
+                {
+                    UserName = "craig228800@gmail.com",
+                    Email = "craig228800@gmail.com",
+                    FirstName = "Craig",
+                    LastName = "Kilborn",
+                    DisplayName = "Company ADMIN",
+                    FullName = "Craig Kilborn"
+                };
+
+
+                userManager.Create(user, "Ck228800");
+
+                userManager.AddToRoles(user.Id,
+                    new string[] {
+                        "CompanyAdmin"
+                    });
+            }
+
 
             if (!context.Plans.Any( t => t.Name == "Group 1"))
             {
-                var tp = new TherapyPlan
+                var tp = new Plan
                 {
                     Name = "Group 1",
                     Created = DateTime.Now,
@@ -159,12 +181,28 @@ namespace BehaveTherapy.Migrations
                     AssignedToUserId = "0ab23451-4ff1-4f7b-9714-19a081b96965"
                 };
 
-                context.Plans.Add(new Plan { Name = "Group 1" });
-
-                
+                context.Plans.Add(new Plan { Name = "Group 1" });                
             }
 
+            if (!context.Companies.Any(t => t.CompanyName == "Test Company22"))
+            {
+                var comp = new Company
+                {
+                    CompanyName = "Test Company 22",
+                    Address = "22 North Ave",
+                    City = "Jacksonville Beach",
+                    State = "Florida",
+                    ZipCode = "32256",
+                    IsDeleted = false,
 
+                    CompanyAdmin = userManager.FindByEmail("craig228800@gmail.com"),
+                    
+                };
+
+                context.Companies.Add(new Company { CompanyName = "Test Company 22" });
+
+
+            }
 
 
             //if (!context.Priority.Any(u => u.Name == "Urgent"))

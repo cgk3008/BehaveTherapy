@@ -11,6 +11,6 @@ namespace BehaveTherapy.Models
         public string Name { get; set; }
         public bool IsCompleted { get; set; }
 
-        public virtual ICollection<TherapyPlan> TherapyPlan { get; set; }
+        public virtual ICollection<Plan> Plan { get; set; }
     }
 }

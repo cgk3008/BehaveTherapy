@@ -11,7 +11,7 @@ namespace BehaveTherapy.Models
         public int TherapyPlanId { get; set; }
         public int UserId { get; set; }
 
-        public virtual TherapyPlan Therapy { get; set; }
+        public virtual Plan Plan{ get; set; }
         public virtual Exercises Exericess { get; set; }
         public virtual ApplicationUser User { get; set; }
 

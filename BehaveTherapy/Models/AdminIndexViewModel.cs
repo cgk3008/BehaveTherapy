@@ -9,7 +9,7 @@ namespace BehaveTherapy.Models
     {
         public ApplicationUser User { get; set; }
         public ICollection<string> Roles { get; set; }
-        public TherapyPlan TherapyPlan { get; set; }
+        public Plan Plan { get; set; }
         public ICollection<string> Users { get; set; }
 
     }

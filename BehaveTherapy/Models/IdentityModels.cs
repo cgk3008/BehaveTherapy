@@ -16,22 +16,24 @@ namespace BehaveTherapy.Models
         public string FullName { get; set; }
 
         //public virtual ICollection<TherapyPlan> TherapyPlan {get; set;}
+        public virtual ICollection<Company> Company { get; set; }
         public virtual ICollection<Plan> Plan { get; set; }
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
-        public virtual ICollection<TherapyPlanComments> Comment { get; set; }        
-        public virtual ICollection<TherapyPlanAttachment> Attachment { get; set; }
-        public virtual ICollection<TherapyPlanHistory> History { get; set; }
+        public virtual ICollection<PlanComments> Comment { get; set; }        
+        public virtual ICollection<PlanAttachments> Attachment { get; set; }
+        public virtual ICollection<PlanHistory> History { get; set; }
 
         public ApplicationUser()
         {
             //TherapyPlan = new HashSet<TherapyPlan>();
+            Company = new HashSet<Company>();
             Plan = new HashSet<Plan>();
             Exercises = new HashSet<Exercises>();
             PlanNotifications = new HashSet<PlanNotifications>();
-            Comment = new HashSet<TherapyPlanComments>();
-            Attachment = new HashSet<TherapyPlanAttachment>();
-            History = new HashSet<TherapyPlanHistory>();
+            Comment = new HashSet<PlanComments>();
+            Attachment = new HashSet<PlanAttachments>();
+            History = new HashSet<PlanHistory>();
         }
 
 
@@ -64,11 +66,11 @@ namespace BehaveTherapy.Models
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
 
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.TherapyPlanComments> TherapyPlanComments { get; set; }
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanComments> PlanComments { get; set; }
 
-        public DbSet<TherapyPlanAttachment> TherapyPlanAttachments { get; set; }     
+        public DbSet<PlanAttachments> PlanAttachments { get; set; }     
 
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.TherapyPlanHistory> TherapyPlanHistories { get; set; }
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanHistory> PlanHistories { get; set; }
 
         public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanPriority> PlanPriorities { get; set; }
 
@@ -77,5 +79,7 @@ namespace BehaveTherapy.Models
         public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanType> PlanTypes { get; set; }
 
         public System.Data.Entity.DbSet<BehaveTherapy.Models.Plan> Plans { get; set; }
+
+        public System.Data.Entity.DbSet<BehaveTherapy.Models.Company> Companies { get; set; }
     }
 }

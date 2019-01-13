@@ -16,8 +16,9 @@ namespace BehaveTherapy.Models
         public string TherapistId { get; set; }
         public bool IsDeleted { get; set; }
         public string AssignedToUserId { get; set; }
+        public string CompanyId { get; set; }
 
-
+        public virtual Company Company { get; set; }
         public virtual ApplicationUser Therapist { get; set; }
         public virtual ApplicationUser AssignedToUser { get; set; }
 

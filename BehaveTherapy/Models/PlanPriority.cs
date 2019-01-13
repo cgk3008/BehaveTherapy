@@ -9,6 +9,6 @@ namespace BehaveTherapy.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<TherapyPlan> TherapyPlan { get; set; }
+        public virtual ICollection<Plan> Plan { get; set; }
     }
 }
