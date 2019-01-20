@@ -9,7 +9,7 @@ namespace BehaveTherapy.Models
     public class AdminCompany
     {
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         public MultiSelectList Users { get; set; }
         public string[] SelectedUsers { get; set; }

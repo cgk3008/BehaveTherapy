@@ -1,0 +1,59 @@
+﻿@model BehaveTherapy.Models.AdminCompany
+@{
+    ViewBag.Title = "AddToCompany";
+}
+
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left">
+                    <i class="fa fa-desktop green"></i> Add User to Company:
+                    @Html.DisplayFor(model => model.Company.CompanyName)
+                  
+
+                </h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+
+            @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.Company.Id)
+        
+
+        @Html.ListBox("SelectedUsers", Model.Users, new { @class = "control-label col-md-2" })
+        <br />
+        <br />
+        <br />
+        <h5>
+            Hold Ctrl Key to Select Multiple Users for the Company. <br /><br />
+            Hold Shift Key and Scroll through List to Select Multiple Users or All Users.
+        </h5>
+        <br />
+        <p><input type="submit" class="btn btn-info" /></p>
+
+}
+
+
+            <br />
+            @Html.ActionLink("Back to list", "Index", "Companies", null, new { @class = "btn btn-default" })
+        </div>
+
+    </div>
+
+</div>
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

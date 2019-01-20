@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminCompaniesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminIndexViewsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\Exercises.cs" />
     <Compile Include="Models\Extensions.cs" />
+    <Compile Include="Models\Helper\CompanyHelper.cs" />
     <Compile Include="Models\Helper\Extension.cs" />
     <Compile Include="Models\Helper\OldNewTherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\TherapyPlanHelper.cs" />
@@ -1821,6 +1823,9 @@
     <Content Include="Views\Companies\Edit.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Companies\MyCompany.cshtml" />
+    <Content Include="Views\AdminCompanies\AddToCompany.cshtml" />
+    <Content Include="Views\AdminCompanies\Index.cshtml" />
+    <Content Include="Views\AdminCompanies\RemoveUser.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -6,3 +6,97 @@
 }
 
 
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop blue"></i> My Projects</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <h3>
+                @if (User.IsInRole("CompanyAdmin") || User.IsInRole("Admin"))
+    {
+            @Html.ActionLink("Create New Plan", "Create", "Companies", null, new { @class = "btn btn-success" })
+            <br />
+            <br />
+            @Html.ActionLink("Create New Therapist", "Register", "Account", null, new { @class = "btn btn-success" })
+
+}
+            </h3>
+
+
+            <table id="mytable" class="dataTables">
+                <thead>
+                    <tr>
+                        <th>
+                            Project Name
+                        </th>
+                        <th>Project Action Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.Company.IsDeleted == false)
+                        {
+                            <tr>
+                                <td>
+
+                                    @Html.DisplayFor(modelItem => item.Company.Name) | Admin: @Html.DisplayFor(modelItem => item.CompanyAdmin.FullName)
+
+                                    <ul>
+                                        @foreach (var u in item.Company.Users)
+                                        {
+                                            <li>
+                                                @u.FullName
+                                                @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+                                                {
+                                                    @Html.ActionLink("Remove User", "RemoveUser", "AdminProjects", new { id = item.Company.Id, userId = u.Id }, new { @class = "btn-xs btn-warning", type = "button" })
+                                                }
+                                            </li>
+                                        }
+                                    </ul>
+
+                                </td>
+                                <td>
+
+                                    @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+                                    {
+                                        @Html.ActionLink("Add User to Project", "AddToProject", "AdminProjects", new { id = item.Company.Id }, null) <text>|</text>
+
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Project.Id })
+                                        <text> | </text>
+                                    }
+                                    @Html.ActionLink("Details", "Details", new { id = item.Project.Id })
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+
+                                        <text>|</text>@Html.ActionLink("Delete", "Delete", new { id = item.Project.Id })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+            <script>
+                $('#mytable').DataTable();
+            </script>
+        </div>
+    </div>
+</div>
+
+

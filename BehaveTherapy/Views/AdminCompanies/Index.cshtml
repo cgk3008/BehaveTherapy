@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BehaveTherapy.Models.Company>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop blue"></i> Admin Company Index</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <br />
+            <h3>@Html.ActionLink("Create Company", "Create", "Companies", null, new { @class = "btn btn-success" })</h3>
+
+            <br />
+            @foreach (var chg in Model)
+            {
+                <tr>
+                    <td>  need to add some divs to box in companies
+                        @chg.CompanyName |
+                        @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Id }, new { @class = "btn btn-success" })   <text>|</text>
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+    {
+                    @Html.ActionLink("Edit", "Edit", "Companies", null, new { id = chg.Id } ) <text>|</text>
+                    @Html.ActionLink("Details", "Details", "Companies", null, new { id = chg.Id })<text>|</text>
+                    @Html.ActionLink("Delete", "Delete", "Companies", null, new { id = chg.Id })
+}
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var user in chg.Users)
+                            {
+                            <li>
+                                @user.FullName <text>|</text>
+                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id }, new { @class = "btn btn-warning" })
+                            </li>
+                            }
+                        </ul>
+
+                    </td>
+                </tr>
+            }
+        </div>
+    </div>
+</div>
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

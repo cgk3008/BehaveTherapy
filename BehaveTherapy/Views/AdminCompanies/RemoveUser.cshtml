@@ -1,0 +1,68 @@
+﻿@model BehaveTherapy.Models.AdminCompany
+@{
+    ViewBag.Title = "RemoveUser";
+}
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop green"></i> Admin - Remove User</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            @*  move this to to post once user selected?
+                
+                @if (Model.RmvUser.Id == Model.Company.CompanyAdmin.Id)
+            {
+                @Html.HiddenFor(m => m.RmvUser.Id)
+                <h3>
+                    This is the current Company Admin. Verify you want to remove this user.
+                </h3>
+            }*@
+
+            @using (Html.BeginForm("AdminCompanies"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Company.Id)
+                @Html.HiddenFor(m => m.RmvUser.Id)
+
+                <h3>Project Name: @Html.DisplayFor(model => model.Company.CompanyName) </h3>
+                @*@Html.DisplayFor(model => model.Project.Id)*@
+                <br />
+                <br />
+
+                <h3>User Name: @Html.DisplayFor(model => model.RmvUser.FullName)</h3>
+
+
+                @*@Html.Display(m => m.RmvUser)*@
+                @*ok need this changed, just one user*@
+                <br />
+                <br />
+                <br />
+                <h4>
+                    Are you sure you want to remove this "User" from the company?
+                </h4>
+                <br />
+                <p><input type="submit" value="Yes, Remove User" class="btn btn-danger" /></p>
+
+            }
+            <br />
+            <br />
+            <strong>
+                @Html.ActionLink("Back to list", "Index", "Companies", null, new { @class = "btn btn-default" })
+            </strong>
+            <br />
+
+        </div>
+    </div>
+</div>
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
