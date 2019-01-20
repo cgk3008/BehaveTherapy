@@ -167,9 +167,20 @@ namespace BehaveTherapy.Controllers
 
                     //add if user email equals allowed email in therapist list then add    UserManager.AddToRole(user.Id, "Therapist");
 
-                    UserManager.AddToRole(user.Id, "Client");
 
-                    return RedirectToAction("Index", "Home");
+
+                    //if (model.NewCompany == true)
+                    //{
+                        
+                    //    return RedirectToAction("Create", "Company");
+                    //}
+
+                    //else
+                    //{
+                        
+                        return RedirectToAction("Index", "Home");
+                    //}
+
                 }
                 AddErrors(result);
             }

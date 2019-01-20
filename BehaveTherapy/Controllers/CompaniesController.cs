@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BehaveTherapy.Models;
+using BehaveTherapy.Models.Helper;
 using Microsoft.AspNet.Identity;
 
 namespace BehaveTherapy.Controllers
@@ -49,14 +50,36 @@ namespace BehaveTherapy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CompanyName,Address,City,State,ZipCode,IsDeleted")] Company company)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid /*&& company.Register.Equals(true)*/)
             {
+                var user = User.Identity.GetUserId();
+
+                //CompanyHelper helper = new CompanyHelper();
+
+                //helper.AddUserToCompany(company.Users.Where(u => u.Id == user).ToString(), company.Id);
+
                 db.Companies.Add(company);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(company);
+        }
+
+        //POST: AddUser
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddToCompany(AdminCompany model)
+        {
+
+            CompanyHelper helper = new CompanyHelper();
+
+
+            foreach (var useradd in model.SelectedUsers)
+            {
+                helper.AddUserToCompany(useradd, model.Company.Id);
+            }
+            return RedirectToAction("Index", "Companies");
         }
 
         // GET: Companies/Edit/5

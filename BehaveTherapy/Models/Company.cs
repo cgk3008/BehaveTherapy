@@ -30,6 +30,8 @@ namespace BehaveTherapy.Models
         public virtual ApplicationUser Therapist { get; set; }
         public virtual ApplicationUser Client { get; set; }
 
+        //public virtual RegisterViewModel Register { get; set; }
+
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<Plan> Plans { get; set; }
 
