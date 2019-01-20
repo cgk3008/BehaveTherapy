@@ -23,37 +23,73 @@
             <h3>@Html.ActionLink("Create Company", "Create", "Companies", null, new { @class = "btn btn-success" })</h3>
 
             <br />
-            @foreach (var chg in Model)
-            {
-                <tr>
-                    <td>  need to add some divs to box in companies
-                        @chg.CompanyName |
-                        @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Id }, new { @class = "btn btn-success" })   <text>|</text>
+            <div class="table-responsive">
+                <table id="mytable" class="dataTables">
+                    <thead>
+                        <tr>
+                            <th>
+                                Company Name
+                            </th>
+                            <th>
+                                Add Employee
+                            </th>
+                            <th>
+                                Modify Company
+                            </th>
+                            <th>
+                                Employees
+                            </th>
+                        </tr>
+                    </thead>
 
-                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
-    {
-                    @Html.ActionLink("Edit", "Edit", "Companies", null, new { id = chg.Id } ) <text>|</text>
-                    @Html.ActionLink("Details", "Details", "Companies", null, new { id = chg.Id })<text>|</text>
-                    @Html.ActionLink("Delete", "Delete", "Companies", null, new { id = chg.Id })
-}
-                    </td>
-                    <td>
-                        <ul>
-                            @foreach (var user in chg.Users)
-                            {
-                            <li>
-                                @user.FullName <text>|</text>
-                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId =  user.Id }, new { @class = "btn btn-warning" })
-                            </li>
-                            }
-                        </ul>
+                    <tbody>
 
-                    </td>
-                </tr>
-            }
+                        @foreach (var chg in Model)
+                        {
+
+
+                            //need to add some divs to box in companies
+
+                            <tr>
+                                <td>
+                                    @chg.CompanyName
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Id }, new { @class = "btn btn-success" })
+                                </td>
+
+                                <td>
+                                    @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", "Companies", new { id = chg.Id }, null) <text>|</text>
+                                        @Html.ActionLink("Details", "Details", "Companies", new { id = chg.Id }, null)<text>|</text>
+                                        @Html.ActionLink("Delete", "Delete", "Companies", new { id = chg.Id }, null)
+                                    }
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach (var user in chg.Users)
+                                        {
+                                            <li>
+                                                @user.FullName <text>|</text>
+                                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn btn-warning" })
+                                            </li>
+                                        }
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-@*@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+
+    @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@
+
+    <script>
+	$('#mytable').DataTable();
+    </script>

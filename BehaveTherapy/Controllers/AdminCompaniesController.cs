@@ -60,7 +60,7 @@ namespace BehaveTherapy.Controllers
             {
                 helper.AddUserToCompany(useradd, model.Company.Id);
             }
-            return RedirectToAction("Index", "Companies");
+            return RedirectToAction("Index", "AdminCompanies");
         }
 
         //GET: RemoveUser
@@ -91,7 +91,7 @@ namespace BehaveTherapy.Controllers
             company.Users.Remove(usr);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Companies");
+            return RedirectToAction("Index", "AdminCompanies");
         }
 
     }
