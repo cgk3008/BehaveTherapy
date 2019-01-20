@@ -43,7 +43,7 @@
                             {
                             <li>
                                 @user.FullName <text>|</text>
-                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId =  user.Id }, new { @class = "btn btn-warning" })
                             </li>
                             }
                         </ul>

@@ -54,7 +54,7 @@ namespace BehaveTherapy.Controllers
         {
 
             CompanyHelper helper = new CompanyHelper();
-          
+
 
             foreach (var useradd in model.SelectedUsers)
             {
@@ -68,16 +68,14 @@ namespace BehaveTherapy.Controllers
         //ok i don't want list of users to remove, just the one linked to the user.Id
         public ActionResult RemoveUser(int id, string userId)
         {
-      
+
 
             AdminCompany AdminCompany = new AdminCompany();
             var company = db.Companies.Find(id);
             Company rmvuser = new Company();
             var selected = userId;
             AdminCompany.RmvUser = db.Users.Find(userId);
-            AdminCompany.Company = company;
-
-            //AdminProject.Project = project;
+            AdminCompany.Company = company;            
 
             return View(AdminCompany);
         }
@@ -86,21 +84,11 @@ namespace BehaveTherapy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RemoveUser(AdminCompany model)
-        {
-
-            //ProjectHelper helper = new ProjectHelper();
-            //foreach (var userrmv in dB.Users.Select(r => r.Id).ToList())
-            //{
-            //    helper.RemoveUserFromProject(userrmv, model.Project.Id);
-            //}
-
-
-            //public Exception RemoveUserFromProject(string userId, int projectId)
-            //{
+        {           
 
             var company = db.Companies.Find(model.Company.Id);
             var usr = db.Users.Find(model.RmvUser.Id);
-           company.Users.Remove(usr);
+            company.Users.Remove(usr);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Companies");
