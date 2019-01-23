@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <div class="main-content">
     <div class="container">
 
         <div class="page-content">
-
             <!-- Heading -->
             <div class="single-head">
                 <!-- Heading -->
@@ -24,7 +24,7 @@
 
             <br />
             <div class="table-responsive">
-                <table id="mytable" class="dataTables">
+                <table id="mytable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>
@@ -48,7 +48,7 @@
                         {
 
 
-                            //need to add some divs to box in companies
+                            //add If statement for if equal to company ID, then display company .....
 
                             <tr>
                                 <td>
@@ -72,7 +72,9 @@
                                         {
                                             <li>
                                                 @user.FullName <text>|</text>
-                                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn btn-warning" })
+                                                @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
+                                                <br />
+                                                <br />
                                             </li>
                                         }
                                     </ul>
@@ -85,11 +87,12 @@
             </div>
         </div>
     </div>
+</div>
 
     @*@section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }*@
 
     <script>
-	$('#mytable').DataTable();
+        $('#mytable').DataTable();
     </script>

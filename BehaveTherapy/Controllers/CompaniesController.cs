@@ -133,6 +133,14 @@ namespace BehaveTherapy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
+            //var users = db.Companies.Where(u => u.Id == id).Any();
+            //if ( users == true)
+            //{
+            //    return 
+            //}
+            
+
             Company company = db.Companies.Find(id);
             db.Companies.Remove(company);
             db.SaveChanges();

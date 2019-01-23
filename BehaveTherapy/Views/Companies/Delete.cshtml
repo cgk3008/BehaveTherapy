@@ -62,12 +62,25 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    @if (!Model.Users.Any())
+    {
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    }
+
+    else
+    {
+            <div class="form-actions no-color">
+                <h1>CANNOT DELETE COMPANY WITH EMPLOYEES!</h1>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
     }
 </div>
