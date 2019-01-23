@@ -1826,6 +1826,7 @@
     <Content Include="Views\AdminCompanies\AddToCompany.cshtml" />
     <Content Include="Views\AdminCompanies\Index.cshtml" />
     <Content Include="Views\AdminCompanies\RemoveUser.cshtml" />
+    <Content Include="Views\AdminCompanies\MyCompany.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

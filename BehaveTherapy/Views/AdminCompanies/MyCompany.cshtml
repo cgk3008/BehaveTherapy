@@ -1,7 +1,12 @@
-﻿@model IEnumerable<BehaveTherapy.Models.Company>
+﻿@model IEnumerable<BehaveTherapy.Models.CompanyIndexViewModel>
+
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "MyCompany";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>My Company</h2>
 
 <div class="main-content">
     <div class="container">
@@ -52,29 +57,29 @@
 
                             <tr>
                                 <td>
-                                    @chg.CompanyName
+                                    @chg.Company.CompanyName
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Id }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Company.Id }, new { @class = "btn btn-success" })
                                 </td>
 
                                 <td>
                                     @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
                                     {
-                                        @Html.ActionLink("Edit", "Edit", "Companies", new { id = chg.Id }, null) <text>|</text>
-                                        @Html.ActionLink("Details", "Details", "Companies", new { id = chg.Id }, null)<text>|</text>
-                                        @Html.ActionLink("Delete", "Delete", "Companies", new { id = chg.Id }, null)
+                                        @Html.ActionLink("Edit", "Edit", "Companies", new { id = chg.Company.Id }, null) <text>|</text>
+                                        @Html.ActionLink("Details", "Details", "Companies", new { id = chg.Company.Id }, null)<text>|</text>
+                                        @Html.ActionLink("Delete", "Delete", "Companies", new { id = chg.Company.Id }, null)
                                     }
                                 </td>
                                 <td>
                                     <ul>
                                         @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
                                         {
-                                            foreach (var user in chg.Users)
+                                            foreach (var user in chg.Company.Users)
                                             {
                                                 <li>
                                                     @user.FullName <text>|</text>
-                                                    @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
+                                                    @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Company.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
                                                     <br />
                                                     <br />
                                                 </li>
@@ -99,3 +104,4 @@
 <script>
     $('#mytable').DataTable();
 </script>
+

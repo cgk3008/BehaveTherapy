@@ -1,5 +1,6 @@
 ﻿using BehaveTherapy.Models;
 using BehaveTherapy.Models.Helper;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,49 @@ namespace BehaveTherapy.Controllers
 
 
             //ok need to adjust Users to User. go to project and adjust dB context reference, ok Antonio helped me do this. Change one, then build then go through error list. Then updated database.
+        }
+
+        public ActionResult MyCompany()
+        {
+            //List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
+            //var userId = User.Identity.GetUserId();
+            //List<Company> companies = db.Users.Find(userId).Company.ToList();
+
+            //foreach (Company company in companies)
+            //{
+            //    CompanyIndexViewModel vm = new CompanyIndexViewModel()
+            //    {
+            //        Company = company,
+            //        CompanyAdmin = db.Users.Find(company.CompanyAdmin),
+            //        UserId = userId
+            //    };
+            //    vmodel.Add(vm);
+            //}
+            //return View(vmodel);
+
+            var userId = User.Identity.GetUserId();
+
+            var userCompId = db.Users.Where( u => u.Company.Where( c => c.))
+
+            //var company = db.Users.Find(userId).Company;
+
+            if (User.IsInRole("CompanyAdmin"))
+            {
+                var myCompany = db.Companies.Where(c => c.CompanyAdmin.Id == userId).ToList();
+                return View(myCompany);
+            }
+
+            if (User.IsInRole("Therapist"))
+            {
+                var myCompany = db.Companies.Where(c => c.Id == 
+                return View(myCompany);
+            }
+
+
+            else //temperory test if redirect works
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         //GET: AddUser
@@ -75,7 +119,7 @@ namespace BehaveTherapy.Controllers
             Company rmvuser = new Company();
             var selected = userId;
             AdminCompany.RmvUser = db.Users.Find(userId);
-            AdminCompany.Company = company;            
+            AdminCompany.Company = company;
 
             return View(AdminCompany);
         }
@@ -84,7 +128,7 @@ namespace BehaveTherapy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RemoveUser(AdminCompany model)
-        {           
+        {
 
             var company = db.Companies.Find(model.Company.Id);
             var usr = db.Users.Find(model.RmvUser.Id);
