@@ -65,21 +65,13 @@ namespace BehaveTherapy.Models
 //public DbSet<TherapyPlan> TherapyPlan { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanComments> PlanComments { get; set; }
-
-        public DbSet<PlanAttachments> PlanAttachments { get; set; }     
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanHistory> PlanHistories { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanPriority> PlanPriorities { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanStatus> PlanStatus { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.PlanType> PlanTypes { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.Plan> Plans { get; set; }
-
-        public System.Data.Entity.DbSet<BehaveTherapy.Models.Company> Companies { get; set; }
+        public DbSet<PlanComments> PlanComments { get; set; }
+        public DbSet<PlanAttachments> PlanAttachments { get; set; }  
+        public DbSet<PlanHistory> PlanHistories { get; set; }
+        public DbSet<PlanPriority> PlanPriorities { get; set; }
+        public DbSet<PlanStatus> PlanStatus { get; set; }
+        public DbSet<PlanType> PlanTypes { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Company> Companies { get; set; }
     }
 }

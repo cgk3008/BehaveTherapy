@@ -35,48 +35,53 @@ namespace BehaveTherapy.Controllers
             //ok need to adjust Users to User. go to project and adjust dB context reference, ok Antonio helped me do this. Change one, then build then go through error list. Then updated database.
         }
 
-        public ActionResult MyCompany()
-        {
-            //List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
-            //var userId = User.Identity.GetUserId();
-            //List<Company> companies = db.Users.Find(userId).Company.ToList();
+        //public ActionResult MyCompany()
+        //{
+        //    List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
+        //    var userId = User.Identity.GetUserId();
+        //    List<Company> companies = db.Users.Find(userId).Company.ToList();
+            
+        //    //var companyIdList = db.Companies.Where( c => c.Id == )
+        //    //List<Company> companies = db.Users.Find(userId).Company.ToList();
 
-            //foreach (Company company in companies)
-            //{
-            //    CompanyIndexViewModel vm = new CompanyIndexViewModel()
-            //    {
-            //        Company = company,
-            //        CompanyAdmin = db.Users.Find(company.CompanyAdmin),
-            //        UserId = userId
-            //    };
-            //    vmodel.Add(vm);
-            //}
-            //return View(vmodel);
+            
 
-            var userId = User.Identity.GetUserId();
+        //    foreach (Company company in companies)
+        //    {
+        //        CompanyIndexViewModel vm = new CompanyIndexViewModel()
+        //        {
+        //            Company = company,
+        //            CompanyAdmin = db.Users.Find(company.CompanyAdmin),
+        //            UserId = userId
+        //        };
+        //        vmodel.Add(vm);
+        //    }
+        //    return View(vmodel);
 
-            var userCompId = db.Users.Where( u => u.Company.Where( c => c.))
+        //    //var userId = User.Identity.GetUserId();
 
-            //var company = db.Users.Find(userId).Company;
+        //    //var userCompId = db.Users.Where( u => u.Company.Where( c => c.))
 
-            if (User.IsInRole("CompanyAdmin"))
-            {
-                var myCompany = db.Companies.Where(c => c.CompanyAdmin.Id == userId).ToList();
-                return View(myCompany);
-            }
+        //    //var company = db.Users.Find(userId).Company;
 
-            if (User.IsInRole("Therapist"))
-            {
-                var myCompany = db.Companies.Where(c => c.Id == 
-                return View(myCompany);
-            }
+        //    //if (User.IsInRole("CompanyAdmin" ) || User.IsInRole("Admin"))
+        //    //{
+        //    //    var myCompany = db.Companies.Where(c => c.CompanyAdmin.Id == userId).ToList();
+        //    //    return View(myCompany);
+        //    //}
+
+        //    ////if (User.IsInRole("Therapist"))
+        //    ////{
+        //    ////    var myCompany = db.Companies.Where(c => c.Id == 
+        //    ////    return View(myCompany);
+        //    ////}
 
 
-            else //temperory test if redirect works
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
+        //    //else //temperory test if redirect works
+        //    //{
+        //    //    return RedirectToAction("Index", "Home");
+        //    //}
+        //}
 
         //GET: AddUser
         public ActionResult AddToCompany(int id)

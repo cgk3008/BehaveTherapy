@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BehaveTherapy.Models.CompanyIndexViewModel>
 
 @{
-    ViewBag.Title = "My Company";
+    ViewBag.Title = "My Companies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -52,7 +52,7 @@
                             <tr>
                                 <td>
 
-                                    @Html.DisplayFor(modelItem => item.Company.Name) | Admin: @Html.DisplayFor(modelItem => item.CompanyAdmin.FullName)
+                                    @*@Html.DisplayFor(modelItem => item.Company.Name)*@ | Admin: @Html.DisplayFor(modelItem => item.CompanyAdmin.FullName)
 
                                     <ul>
                                         @foreach (var u in item.Company.Users)
@@ -74,15 +74,15 @@
                                     {
                                         @Html.ActionLink("Add User to Project", "AddToProject", "AdminProjects", new { id = item.Company.Id }, null) <text>|</text>
 
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Project.Id })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Company.Id })
                                         <text> | </text>
                                     }
-                                    @Html.ActionLink("Details", "Details", new { id = item.Project.Id })
+                                    @Html.ActionLink("Details", "Details", new { id = item.Company.Id })
 
                                     @if (User.IsInRole("Admin"))
                                     {
 
-                                        <text>|</text>@Html.ActionLink("Delete", "Delete", new { id = item.Project.Id })
+                                        <text>|</text>@Html.ActionLink("Delete", "Delete", new { id = item.Company.Id })
                                     }
                                 </td>
                             </tr>

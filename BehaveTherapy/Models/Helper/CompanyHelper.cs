@@ -48,7 +48,7 @@ namespace BehaveTherapy.Models.Helper
 
         public ICollection<ApplicationUser> ListAdminForCompany(int companyId)
         {
-            var admin = db.Companies.Find(companyId).CompanyAdmin;
+            var admin = db.Companies.Find(companyId)/*.CompanyAdmin*/;
             var usr = db.Users.Find(admin).FullName;
 
             return null;

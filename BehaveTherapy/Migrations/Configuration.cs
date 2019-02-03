@@ -195,7 +195,7 @@ namespace BehaveTherapy.Migrations
                     ZipCode = "32256",
                     IsDeleted = false,
 
-                    CompanyAdmin = userManager.FindByEmail("craig228800@gmail.com"),
+                    //CompanyAdmin = userManager.FindByEmail("craig228800@gmail.com"),
                     
                 };
 

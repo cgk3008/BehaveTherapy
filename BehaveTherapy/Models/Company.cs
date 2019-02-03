@@ -25,15 +25,17 @@ namespace BehaveTherapy.Models
         public bool IsDeleted { get; set; }
 
 
-        //did I do below code correctly?  Want to link Users for these roles.
-        public virtual ApplicationUser CompanyAdmin { get; set; }
-        public virtual ApplicationUser Therapist { get; set; }
-        public virtual ApplicationUser Client { get; set; }
+        //did I do below code correctly?  Want to link Users for these roles.  I DON"T THINK I NEED THESE, JUST USING ROLE MANAGER AND THEN COMPANY ID!
+        ////public virtual ApplicationUser CompanyAdmin { get; set; }
+        ////public virtual ApplicationUser Therapist { get; set; }
+        ////public virtual ApplicationUser Client { get; set; }
 
         //public virtual RegisterViewModel Register { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<Plan> Plans { get; set; }
+
+        //public ICollection<string> Roles { get; set; }
 
         public Company()
         {

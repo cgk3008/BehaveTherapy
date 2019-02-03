@@ -147,14 +147,12 @@ namespace BehaveTherapy.Controllers
             return RedirectToAction("Index");
         }
 
-
-        // GET: MyCompany
+        // GET: MyCompanies
         [Authorize]
-        public ActionResult MyProjects()
+        public ActionResult MyCompany()
         {
-
-            List<CompanyIndexViewModel> vms = new List<CompanyIndexViewModel>();
-            var userId = User.Identity.GetUserId();  
+            List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
+            var userId = User.Identity.GetUserId();
             List<Company> companies = db.Users.Find(userId).Company.ToList();
 
             foreach (Company company in companies)
@@ -162,15 +160,13 @@ namespace BehaveTherapy.Controllers
                 CompanyIndexViewModel vm = new CompanyIndexViewModel()
                 {
                     Company = company,
-                    CompanyAdmin = db.Users.Find(company.CompanyAdmin),
-
+                    CompanyAdmin = db.Users.Find(company/*.CompanyAdmin*/),
                     UserId = userId
                 };
-
-                vms.Add(vm);
+                vmodel.Add(vm);
             }
-            return View(vms);
-                }
+            return View(vmodel);          
+        }
 
 
         protected override void Dispose(bool disposing)

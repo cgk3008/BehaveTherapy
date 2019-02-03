@@ -72,12 +72,12 @@
                                         {
                                             foreach (var user in chg.Users)
                                             {
-                                                <li>
-                                                    @user.FullName <text>|</text>
-                                                    @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
-                                                    <br />
-                                                    <br />
-                                                </li>
+                                        <li>
+                                            @user.FullName <text> ( </text>  add Role Name for user  <text> ) </text>
+                                            @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
+                                            <br />
+                                            <br />
+                                        </li>
                                             }
                                         }
                                     </ul>

@@ -11,5 +11,6 @@ namespace BehaveTherapy.Models
         public ApplicationUser CompanyAdmin { get; set; }
         //public User UserId { get; set; }
         public string UserId { get; set; }
+
     }
 }
