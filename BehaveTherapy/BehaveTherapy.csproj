@@ -219,6 +219,7 @@
     <Compile Include="Models\Helper\CompanyHelper.cs" />
     <Compile Include="Models\Helper\Extension.cs" />
     <Compile Include="Models\Helper\OldNewTherapyPlanHelper.cs" />
+    <Compile Include="Models\Helper\PlanHelper.cs" />
     <Compile Include="Models\Helper\TherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\ExerciseHelper.cs" />
     <Compile Include="Models\Helper\UserRolesHelper.cs" />
@@ -291,6 +292,7 @@
     <Content Include="Views\Plans\Details.cshtml" />
     <Content Include="Views\Plans\Edit.cshtml" />
     <Content Include="Views\Plans\Index.cshtml" />
+    <Content Include="Views\Plans\MyPlans.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GALLAXY-HTML\Documentation\Gallaxy\assets\css\documenter_style.css" />

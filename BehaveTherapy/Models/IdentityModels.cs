@@ -16,7 +16,7 @@ namespace BehaveTherapy.Models
         public string FullName { get; set; }
 
         //public virtual ICollection<TherapyPlan> TherapyPlan {get; set;}
-        public virtual ICollection<Company> Company { get; set; }
+        // comment out to just have one user per company   public virtual ICollection<Company> Company { get; set; }
         public virtual ICollection<Plan> Plan { get; set; }
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
@@ -27,7 +27,7 @@ namespace BehaveTherapy.Models
         public ApplicationUser()
         {
             //TherapyPlan = new HashSet<TherapyPlan>();
-            Company = new HashSet<Company>();
+           // comment out so only one user per company      Company = new HashSet<Company>();
             Plan = new HashSet<Plan>();
             Exercises = new HashSet<Exercises>();
             PlanNotifications = new HashSet<PlanNotifications>();

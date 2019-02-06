@@ -149,24 +149,24 @@ namespace BehaveTherapy.Controllers
 
         // GET: MyCompanies
         [Authorize]
-        public ActionResult MyCompany()
-        {
-            List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
-            var userId = User.Identity.GetUserId();
-            List<Company> companies = db.Users.Find(userId).Company.ToList();
+        //public ActionResult MyCompany()
+        //{
+        //    List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
+        //    var userId = User.Identity.GetUserId();
+        //   //    revise this now that Compnay notin users????  List<Company> companies = db.Users.Find(userId).Company.ToList();
 
-            foreach (Company company in companies)
-            {
-                CompanyIndexViewModel vm = new CompanyIndexViewModel()
-                {
-                    Company = company,
-                    CompanyAdmin = db.Users.Find(company/*.CompanyAdmin*/),
-                    UserId = userId
-                };
-                vmodel.Add(vm);
-            }
-            return View(vmodel);          
-        }
+        //    foreach (Company company in companies)
+        //    {
+        //        CompanyIndexViewModel vm = new CompanyIndexViewModel()
+        //        {
+        //            Company = company,
+        //            CompanyAdmin = db.Users.Find(company/*.CompanyAdmin*/),
+        //            UserId = userId
+        //        };
+        //        vmodel.Add(vm);
+        //    }
+        //    return View(vmodel);          
+        //}
 
 
         protected override void Dispose(bool disposing)
