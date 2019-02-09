@@ -21,8 +21,11 @@ namespace BehaveTherapy.Models
                 {
                     return ImageFormat.Jpeg.Equals(img.RawFormat) ||
                         ImageFormat.Png.Equals(img.RawFormat) ||
-                        ImageFormat.Gif.Equals(img.RawFormat);
+                        ImageFormat.Gif.Equals(img.RawFormat)
+                       ;
                 }
+
+
             }
             catch
             {

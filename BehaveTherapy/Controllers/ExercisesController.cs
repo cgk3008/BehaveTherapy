@@ -50,22 +50,78 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+
+            //try
+            //{
+            //    if (file.ContentLength > 0)
+            //    {
+            //        string filename = Path.GetFileName(file.FileName);
+            //        string filepath = Path.Combine(Server.MapPath("~/UploadVideo/"), filename);
+            //        file.SaveAs(filepath);
+            //    }
+            //    ViewBag.Message = "Uploaded File Saved Successfully in folder";
+
+            //    //ok able to save file to folder, not files over 4MB at moment.  Also, if try code to save to database, get error in Add, does not get the information, some [content.] in all the fields!!!!
+            //    //return View();
+
+            //    //exercises.Created = DateTime.Now;
+
+            //    //db.Exercises.Add(exercises);
+            //    //db.SaveChanges();
+            //    ////return RedirectToAction("Index");
+
+            //    //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
+            //    //ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);
+            //    //return View(exercises);
+            //    return View();
+
+            //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            try
             {
-                if (UploadImageValidator.IsWebFriendlyImage(image))
-                {
-                    var fileName = Path.GetFileName(image.FileName);
-                    image.SaveAs(Path.Combine(Server.MapPath("~/UploadVideo/"), fileName));
-                    exercises.FileUrl = "/UploadVideo/" + fileName;
-                }
+                if (file.ContentLength > 0)
 
-                exercises.Created = DateTime.Now;
 
-                db.Exercises.Add(exercises);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                    {
+                        //if (UploadImageValidator.IsWebFriendlyImage(image))
+                        //{
+                        var fileName = Path.GetFileName(file.FileName);
+                        file.SaveAs(Path.Combine(Server.MapPath("~/UploadVideo/"), fileName));
+                        exercises.FileUrl = "/UploadVideo/" + fileName;
+                        //}
+
+                        exercises.Created = DateTime.Now;
+
+                        db.Exercises.Add(exercises);
+                        db.SaveChanges();
+
+                        ViewBag.Message = "Uploaded File Saved Successfully in folder";
+                        return RedirectToAction("Index");
+                    }
+
+
+            }
+
+            catch
+            {
+                ViewBag.Message = "Uploaded File not saved!!!!!!!!!!";
+                return View();
             }
 
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
@@ -92,16 +148,34 @@ namespace BehaveTherapy.Controllers
 
         // POST: Exercises/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId")] Exercises exercises)
+        public ActionResult Edit([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(exercises).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (file.ContentLength > 0)
+                    if (ModelState.IsValid)
+                    {
+                        //if (UploadImageValidator.IsWebFriendlyImage(image))
+                        //{
+                        var fileName = Path.GetFileName(file.FileName);
+                        file.SaveAs(Path.Combine(Server.MapPath("~/UploadVideo/"), fileName));
+                        exercises.FileUrl = "/UploadVideo/" + fileName;
+                        //}
+                        exercises.Created = DateTime.Now;
+                        db.Exercises.Add(exercises);
+                        db.SaveChanges();
+
+                        ViewBag.Message = "Uploaded File Saved Successfully in folder";
+                        return RedirectToAction("Index");
+                    }
+            }
+            catch
+            {
+                ViewBag.Message = "Uploaded File not saved!!!!!!!!!!";
+                return View();
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
             ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<BehaveTherapy.Models.Company>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop blue"></i> Admin Company Index</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+
+            <br />
+            <h3>@Html.ActionLink("Create Company", "Create", "Companies", null, new { @class = "btn btn-success" })</h3>
+
+            <br />
+            <div class="table-responsive">
+                <table id="mytable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Company Name
+                            </th>
+                            <th>
+                                Add Employee
+                            </th>
+                            <th>
+                                Modify Company
+                            </th>
+                            <th>
+                                Employees
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var chg in Model)
+                        {
+
+
+                            //add If statement for if equal to company ID, then display company .....
+
+                            <tr>
+                                <td>
+                                    @chg.CompanyName
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Add User to Company", "AddToCompany", new { id = chg.Id }, new { @class = "btn btn-success" })
+                                </td>
+
+                                <td>
+                                    @if (User.IsInRole("CompanyAdmin"))
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", "Companies", new { id = chg.Id }, null) <text>|</text>
+                                        @Html.ActionLink("Details", "Details", "Companies", new { id = chg.Id }, null)<text>|</text>
+                                        @Html.ActionLink("Delete", "Delete", "Companies", new { id = chg.Id }, null)
+                                    }
+                                </td>
+                                <td>
+                                    <ul>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+                                        {
+                                            foreach (var user in chg.Users)
+                                            {
+                                        <li>
+                                            @user.FullName <text> ( </text>  add Role Name for user  <text> ) </text>
+                                            @Html.ActionLink("Remove User from Company", "RemoveUser", new { id = chg.Id, userId = user.Id }, new { @class = "btn-sm btn-warning" })
+                                            <br />
+                                            <br />
+                                        </li>
+                                            }
+                                        }
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+<script>
+    $('#mytable').DataTable();
+</script>

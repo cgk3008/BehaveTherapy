@@ -22,6 +22,20 @@ namespace BehaveTherapy.Controllers
             return View(db.Companies.ToList());
         }
 
+        //// GET: My Companies
+        //public ActionResult CompanyIndex()
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    var userCompany = db.Users.FirstOrDefault( c => c.)
+
+        //    return View(db.Companies.Where( c => c.Id == db.Users.).ToList());
+        //}
+
+
+
+
+
         // GET: Companies/Details/5
         public ActionResult Details(int? id)
         {
@@ -148,12 +162,16 @@ namespace BehaveTherapy.Controllers
         }
 
         // GET: MyCompanies
-        [Authorize]
+        //[Authorize]
         //public ActionResult MyCompany()
         //{
         //    List<CompanyIndexViewModel> vmodel = new List<CompanyIndexViewModel>();
         //    var userId = User.Identity.GetUserId();
-        //   //    revise this now that Compnay notin users????  List<Company> companies = db.Users.Find(userId).Company.ToList();
+        //    var userObject = db.Users.Where(u => u.Id == userId);
+
+        //    var userCompanyId = userObject.FirstOrDefault();
+        //    //    revise this now that Compnay notin users????  List<Company> companies = db.Users.Find(userId).Company.ToList();
+        //    List<Company> companies = db.Companies.Where( c => c.Id == )
 
         //    foreach (Company company in companies)
         //    {
@@ -165,7 +183,7 @@ namespace BehaveTherapy.Controllers
         //        };
         //        vmodel.Add(vm);
         //    }
-        //    return View(vmodel);          
+        //    return View(vmodel);
         //}
 
 
