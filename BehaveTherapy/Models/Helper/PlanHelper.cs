@@ -9,13 +9,19 @@ namespace BehaveTherapy.Models.Helper
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public Exception AddUserToCompany(string userId, int planId)
+        public List<Exercises> GetPlanExercises(/*string userId, */int planId)
+        {
+            return db.Plans.Find(planId).Exercises.ToList();
+        }
+
+        public Exception AddExerciseToPlan(int exerciseId, int planId)
         {
             try
             {
                 var plan = db.Plans.Find(planId);
-                var usr = db.Users.Find(userId);
-                plan.Users.Add(usr); /*why didn't this work with prj.Users.Add(str);*/
+                var exercise = db.Exercises.Find(exerciseId);
+
+                plan.Exercises.Add(exercise);
                 db.SaveChanges();
                 return null;
             }
@@ -25,13 +31,14 @@ namespace BehaveTherapy.Models.Helper
             }
         }
 
-        public Exception RemoveUserFromCompany(string userId, int planId)
+        public Exception RemoveExerciseFromPlan(int exerciseId, int planId)
         {
             try
             {
                 var plan = db.Plans.Find(planId);
-                var usr = db.Users.Find(userId);
-                plan.Users.Remove(usr);
+                var exercise = db.Exercises.Find(exerciseId);
+
+                plan.Exercises.Remove(exercise);
                 db.SaveChanges();
                 return null;
             }
@@ -40,22 +47,5 @@ namespace BehaveTherapy.Models.Helper
                 return ex;
             }
         }
-
-        public ICollection<ApplicationUser> ListUsersInPlan(int planId)
-        {
-            return db.Plans.Find(planId).Users.ToList();
-        }
-
-        //public ICollection<ApplicationUser> MyClients(int userId)
-        //{
-        //    //userId is the Therapist, next we want a list of users that are clients in the same company and have a planId created by the logged in Therapist (userId)
-
-        //    var myCompanies = db.Companies.Where( c => c.Users. == userId )
-
-
-        //    return db.Users.Find(userId)
-        //}
-
-
     }
 }

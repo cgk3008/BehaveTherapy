@@ -1,0 +1,50 @@
+﻿@model BehaveTherapy.Models.AddRmvExerciseToPlan
+@{
+    ViewBag.Title = "AddExercise";
+
+}
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left">
+                    <i class="fa fa-desktop green"></i> Add Exercise to Plan:
+                    @Html.DisplayFor(model => model.Plan.Name)
+
+                </h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Plan.Id)
+
+                @Html.ListBox("SelectedExercises", Model.Exercises, new { @class = "control-label col-md-2" })
+                <br />
+                <br />
+                <br />
+                <h5>
+                    Hold Ctrl Key to Select Multiple Exercises for the Plan. <br /><br />
+                    
+                </h5>
+                <br />
+                <p><input type="submit" class="btn btn-info" /></p>
+            }
+            <br />
+            @Html.ActionLink("Back to List", "Index", "Plans", null, new { @class = "btn btn-default" })
+        </div>
+
+    </div>
+
+</div>
+
+

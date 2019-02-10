@@ -80,21 +80,21 @@ namespace BehaveTherapy.Controllers
             return View(company);
         }
 
-        //POST: AddUser
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddToCompany(AdminCompany model)
-        {
+        ////POST: AddUser
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult AddToCompany(AdminCompany model)
+        //{
 
-            CompanyHelper helper = new CompanyHelper();
+        //    CompanyHelper helper = new CompanyHelper();
 
 
-            foreach (var useradd in model.SelectedUsers)
-            {
-                helper.AddUserToCompany(useradd, model.Company.Id);
-            }
-            return RedirectToAction("Index", "Companies");
-        }
+        //    foreach (var useradd in model.SelectedUsers)
+        //    {
+        //        helper.AddUserToCompany(useradd, model.Company.Id);
+        //    }
+        //    return RedirectToAction("Index", "Companies");
+        //}
 
         // GET: Companies/Edit/5
         public ActionResult Edit(int? id)

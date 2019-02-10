@@ -1,0 +1,61 @@
+﻿@model BehaveTherapy.Models.AddRmvExerciseToPlan
+@{
+    ViewBag.Title = "RemoveExercise";
+
+}
+
+<h2>RemoveExercise</h2>
+
+<div class="main-content">
+    <div class="container">
+
+        <div class="page-content">
+
+            <!-- Heading -->
+            <div class="single-head">
+                <!-- Heading -->
+                <h2 class="pull-left"><i class="fa fa-desktop green"></i> Admin - Remove User</h2>
+                <!-- Bread crumbs -->
+                <div class="breads pull-right">
+                    @*<strong>Nav</strong> : <a href="#">Home</a> / <a href="#">Sign</a> / Home*@
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            @using (Html.BeginForm("AddRmvExerciseToPlan"))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Plan.Id)
+                @Html.HiddenFor(m => m.Plan.Id)
+                <h3>
+                    Plan Name: @Html.DisplayFor(model => model.Plan.Name)
+                </h3>
+
+                <br />
+                <br />
+
+                <h3>
+                    Exercise Title: @Html.DisplayFor(model => model.RmvExercise.Title)
+                </h3>
+                <br />
+                <br />
+                <br />
+                <h4>
+                    Are you sure you want to remove this "Exercise" from the plan?
+                </h4>
+                <br />
+                <p><input type="submit" value="Yes, Remove Exercise" class="btn btn-danger" /></p>
+
+            }
+            <br />
+            <br />
+            <strong>
+                @Html.ActionLink("Back to List", "Index", "Plans", null, new { @class = "btn btn-default" })
+            </strong>
+            <br />
+
+        </div>
+    </div>
+</div>
+
+

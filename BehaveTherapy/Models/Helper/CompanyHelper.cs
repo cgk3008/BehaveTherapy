@@ -46,13 +46,13 @@ namespace BehaveTherapy.Models.Helper
             return db.Companies.Find(companyId).Users.ToList();
         }
 
-        public ICollection<ApplicationUser> ListAdminForCompany(int companyId)
-        {
-            var admin = db.Companies.Find(companyId)/*.CompanyAdmin*/;
-            var usr = db.Users.Find(admin).FullName;
+        //public ICollection<ApplicationUser> ListAdminForCompany(int companyId)
+        //{
+        //    var admin = db.Companies.Find(companyId)/*.CompanyAdmin*/;
+        //    var usr = db.Users.Find(admin).FullName;
 
-            return null;
-        }
+        //    return null;
+        //}
 
 
     }
