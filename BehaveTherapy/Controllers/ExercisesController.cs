@@ -18,8 +18,10 @@ namespace BehaveTherapy.Controllers
         // GET: Exercises
         public ActionResult Index()
         {
-            var exercises = db.Exercises.Include(e => e.AssignedToUser).Include(e => e.Plan);
-            return View(exercises.ToList());
+            //var exercises = db.Exercises.Include(e => e.Title);
+            return View(db.Exercises.ToList());
+
+            //return View();
         }
 
         // GET: Exercises/Details/5
@@ -51,52 +53,10 @@ namespace BehaveTherapy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase file)
-        {
-
-            //try
-            //{
-            //    if (file.ContentLength > 0)
-            //    {
-            //        string filename = Path.GetFileName(file.FileName);
-            //        string filepath = Path.Combine(Server.MapPath("~/UploadVideo/"), filename);
-            //        file.SaveAs(filepath);
-            //    }
-            //    ViewBag.Message = "Uploaded File Saved Successfully in folder";
-
-            //    //ok able to save file to folder, not files over 4MB at moment.  Also, if try code to save to database, get error in Add, does not get the information, some [content.] in all the fields!!!!
-            //    //return View();
-
-            //    //exercises.Created = DateTime.Now;
-
-            //    //db.Exercises.Add(exercises);
-            //    //db.SaveChanges();
-            //    ////return RedirectToAction("Index");
-
-            //    //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
-            //    //ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);
-            //    //return View(exercises);
-            //    return View();
-
-            //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        {          
             try
             {
                 if (file.ContentLength > 0)
-
-
                     if (ModelState.IsValid)
                     {
                         //if (UploadImageValidator.IsWebFriendlyImage(image))
@@ -114,8 +74,6 @@ namespace BehaveTherapy.Controllers
                         ViewBag.Message = "Uploaded File Saved Successfully in folder";
                         return RedirectToAction("Index");
                     }
-
-
             }
 
             catch
@@ -125,7 +83,7 @@ namespace BehaveTherapy.Controllers
             }
 
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
-            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);
+            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name");
             return View(exercises);
         }
 
@@ -142,7 +100,7 @@ namespace BehaveTherapy.Controllers
                 return HttpNotFound();
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
-            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);
+            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name");
             return View(exercises);
         }
 
@@ -151,7 +109,9 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase file)
+
+        //removed PlanId from bind list below
+        public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, HttpPostedFileBase file)
         {
             try
             {
@@ -178,7 +138,7 @@ namespace BehaveTherapy.Controllers
                 return View();
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
-            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name", exercises.PlanId);
+            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name");
             return View(exercises);
         }
 

@@ -14,7 +14,7 @@ namespace BehaveTherapy.Models
         public string Title { get; set; }
         [StringLength(400, ErrorMessage = "The {0} cannot be {1} characters long.")]
         public string Description { get; set; }
-        public int PlanId { get; set; }
+        //public int PlanId { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
         public string TimeZoneCreated { get; set; }
@@ -27,16 +27,17 @@ namespace BehaveTherapy.Models
         public string FileUrl { get; set; }
 
 
-        public virtual Plan Plan { get; set; }
-        public virtual Plan TherapistId { get; set; }
-        public virtual ApplicationUser AssignedToUser { get; set; }
+        //shit so code just below was preventing the join table of exercises and plans
+        //public virtual Plan TherapistId { get; set; }
+        //public virtual ApplicationUser AssignedToUser { get; set; }
 
 
-
+        public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
 
         public Exercises()
         {
+            Plans = new HashSet<Plan>();
             PlanNotifications = new HashSet<PlanNotifications>();
         }
 

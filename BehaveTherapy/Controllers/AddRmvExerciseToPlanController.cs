@@ -12,10 +12,15 @@ namespace BehaveTherapy.Controllers
     public class AddRmvExerciseToPlanController : Controller
     {
 
-        private ApplicationDbContext db = new ApplicationDbContext();       
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        //GET: AddExercise
-        public ActionResult AddExercise(int id)
+        public ActionResult Index()
+        {
+            return View(db.Plans.Include("Exercises").ToList());
+        }
+
+            //GET: AddExercise
+            public ActionResult AddExercise(int id)
         {
             var plan = db.Plans.Find(id);
             AddRmvExerciseToPlan AddExercise = new AddRmvExerciseToPlan();           

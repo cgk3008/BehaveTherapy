@@ -1832,6 +1832,7 @@
     <Content Include="Views\AdminCompanies\CompanyIndex.cshtml" />
     <Content Include="Views\AddRmvExerciseToPlan\AddExercise.cshtml" />
     <Content Include="Views\AddRmvExerciseToPlan\RemoveExercise.cshtml" />
+    <Content Include="Views\AddRmvExerciseToPlan\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

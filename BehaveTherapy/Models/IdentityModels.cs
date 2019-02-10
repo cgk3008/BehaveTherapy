@@ -20,14 +20,14 @@ namespace BehaveTherapy.Models
         public virtual ICollection<Plan> Plan { get; set; }
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
-        public virtual ICollection<PlanComments> Comment { get; set; }        
+        public virtual ICollection<PlanComments> Comment { get; set; }
         public virtual ICollection<PlanAttachments> Attachment { get; set; }
         public virtual ICollection<PlanHistory> History { get; set; }
 
         public ApplicationUser()
         {
             //TherapyPlan = new HashSet<TherapyPlan>();
-           // comment out so only one user per company      Company = new HashSet<Company>();
+            // comment out so only one user per company      Company = new HashSet<Company>();
             Plan = new HashSet<Plan>();
             Exercises = new HashSet<Exercises>();
             PlanNotifications = new HashSet<PlanNotifications>();
@@ -55,6 +55,7 @@ namespace BehaveTherapy.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
@@ -62,16 +63,62 @@ namespace BehaveTherapy.Models
             return new ApplicationDbContext();
         }
 
-//public DbSet<TherapyPlan> TherapyPlan { get; set; }
+        public DbSet<Plan> Plans { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<PlanNotifications> PlanNotifications { get; set; }
         public DbSet<PlanComments> PlanComments { get; set; }
-        public DbSet<PlanAttachments> PlanAttachments { get; set; }  
+        public DbSet<PlanAttachments> PlanAttachments { get; set; }
         public DbSet<PlanHistory> PlanHistories { get; set; }
         public DbSet<PlanPriority> PlanPriorities { get; set; }
         public DbSet<PlanStatus> PlanStatus { get; set; }
         public DbSet<PlanType> PlanTypes { get; set; }
-        public DbSet<Plan> Plans { get; set; }
         public DbSet<Company> Companies { get; set; }
+
+     
+
+            protected override void OnModelCreating(DbModelBuilder modelBuilder)
+            {
+                base.OnModelCreating(modelBuilder);
+            }
+
+        
+
+
+
     }
+
+
+    //public class TherapyDbContext : DbContext
+    //{
+    //    public TherapyDbContext() : base("TherapyDb-DataAnnotations")
+    //    {
+    //    }
+
+    //    public DbSet<Plan> Plans { get; set; }
+    //    public DbSet<Exercises> Exercises { get; set; }
+
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        base.OnModelCreating(modelBuilder);
+    //    }
+
+    //}
+
+    //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //{
+
+    //    modelBuilder.Entity<Plan>()
+    //                .HasMany<Exercises>(s => s.Exercises)
+    //                .WithMany(c => c.Plans)
+    //                .Map(cs =>
+    //                {
+    //                    cs.MapLeftKey("PlanRefId");
+    //                    cs.MapRightKey("ExerciseRefId");
+    //                    cs.ToTable("PlanExercise");
+    //                });
+
+    //}
+
+
+
 }

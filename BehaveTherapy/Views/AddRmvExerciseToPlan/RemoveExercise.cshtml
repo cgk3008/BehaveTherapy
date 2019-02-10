@@ -26,7 +26,7 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.Plan.Id)
-                @Html.HiddenFor(m => m.Plan.Id)
+                @Html.HiddenFor(m => m.RmvExercise.Id)
                 <h3>
                     Plan Name: @Html.DisplayFor(model => model.Plan.Name)
                 </h3>
