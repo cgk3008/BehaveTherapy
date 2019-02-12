@@ -1873,7 +1873,6 @@
     <Folder Include="UploadVideo\" />
     <Folder Include="Views\AdminIndexViews\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\VideoFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
