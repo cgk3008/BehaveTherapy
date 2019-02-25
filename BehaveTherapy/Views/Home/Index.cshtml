@@ -29,6 +29,20 @@
                             <h4 class="wow fadeInRight">Click on the tabs to preview the various groups of instructional videos.</h4>
                         </div>
                     </div>
+                    <ol>
+                        @foreach (var item in Model.Plans.Take(10))
+                        {
+                            if (item.IsDeleted == false)
+                            {
+                                <li>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </li>
+
+                            }
+
+                        }
+
+                    </ol>
 
 
                     <!-- Tab -->

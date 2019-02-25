@@ -82,7 +82,7 @@
                         </td>
                         <td>
                             <ul>
-                                @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin"))
+                                @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
                                 {
                                     foreach (var ex in item.Exercises)
                                     {

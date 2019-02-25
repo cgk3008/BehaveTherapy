@@ -25,7 +25,7 @@ namespace BehaveTherapy.Controllers
 
             DashboardViewModel model = new DashboardViewModel()
             {
-                //Plans = userPlans,
+                Plans = userPlans,
                 //PlanNotifications = userPlanNotifications,
                 Exercises = userExercises
             };

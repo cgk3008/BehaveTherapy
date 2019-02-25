@@ -36,13 +36,13 @@
                 </div>
             </div>*@
     
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.TherapistId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TherapistId, "Assign Therapist", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.TherapistId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownList("TherapistId", null, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.TherapistId, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
+            </div>
     
             <div class="form-group">
                 @Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,7 +58,6 @@
                 @Html.LabelFor(model => model.AssignedToUserId, "Assign Client", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
-
                     @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
                 </div>
             </div>

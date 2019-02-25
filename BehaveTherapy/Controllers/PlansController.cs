@@ -78,9 +78,11 @@ namespace BehaveTherapy.Controllers
 
             UserRolesHelper userRoles = new UserRolesHelper();
 
-            var clients = userRoles.ListUsersInRole("Client").ToList();
+            var therapists = userRoles.ListUsersInRole("Therapist").ToList();
 
-          
+            ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName");
+
+            var clients = userRoles.ListUsersInRole("Client").ToList();          
 
             ViewBag.AssignedToUserId = new SelectList(clients, "Id", "FullName");
             return View();
@@ -95,7 +97,9 @@ namespace BehaveTherapy.Controllers
         {
             if (ModelState.IsValid)
             {
-                plan.TherapistId = User.Identity.GetUserId();
+                //plan.TherapistId = User.Identity.GetUserId();
+                //ApplicationUser user = db.Users.Find(plan.TherapistId);
+                //plan.Users.Add(user);
                 plan.Created = DateTime.Now;
                 db.Plans.Add(plan);
                 db.SaveChanges();
@@ -162,10 +166,32 @@ namespace BehaveTherapy.Controllers
             return RedirectToAction("Index");
         }
 
-        //Get: Plans/AddClient
-        //public ActionResult AssignClient()
+        // GET: MyProjects
+        [Authorize]
+        public ActionResult MyPlans()
+        {
 
+            List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
+            var userId = User.Identity.GetUserId();
 
+            //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
+            List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId).ToList();
+
+            foreach (Plan plan in plans)
+            {
+                PlanIndexViewModel vm = new PlanIndexViewModel()
+                {
+                    Plan = plan,
+                    Therapist = db.Users.Find(plan.TherapistId),
+
+                    UserId = userId
+                };
+
+                vms.Add(vm);
+            }
+            return View(vms);
+
+        }
 
 
 
