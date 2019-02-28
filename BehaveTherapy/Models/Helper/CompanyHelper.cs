@@ -46,6 +46,26 @@ namespace BehaveTherapy.Models.Helper
             return db.Companies.Find(companyId).Users.ToList();
         }
 
+        public Exception ListUserCompanyId(string userId)
+        {
+            try
+            {                
+                var usr = db.Users.Find(userId);
+                //List<Company> companies = db.Users.Find(userId).Plan.
+
+               // var userCompany = db.Users.Where(u => u.)
+
+
+                //company.Users.Remove(usr);
+                db.SaveChanges();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
         //public ICollection<ApplicationUser> ListAdminForCompany(int companyId)
         //{
         //    var admin = db.Companies.Find(companyId)/*.CompanyAdmin*/;

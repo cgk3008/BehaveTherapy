@@ -94,6 +94,8 @@ namespace BehaveTherapy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            //so edit view does not show file upload in the form, should be ok, only admins will upload videos to applications
             Exercises exercises = db.Exercises.Find(id);
             if (exercises == null)
             {

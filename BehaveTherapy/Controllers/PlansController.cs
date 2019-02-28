@@ -79,12 +79,15 @@ namespace BehaveTherapy.Controllers
             UserRolesHelper userRoles = new UserRolesHelper();
 
             var therapists = userRoles.ListUsersInRole("Therapist").ToList();
-
             ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName");
 
-            var clients = userRoles.ListUsersInRole("Client").ToList();          
-
+            var clients = userRoles.ListUsersInRole("Client").ToList();   
             ViewBag.AssignedToUserId = new SelectList(clients, "Id", "FullName");
+
+            var companies = db.Companies.ToList();
+            ViewBag.CompanyId = new SelectList(companies, "Id", "CompanyName");
+
+
             return View();
         }
 
@@ -93,13 +96,16 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Created,TherapistId,IsDeleted,AssignedToUserId")] Plan plan)
+        public ActionResult Create([Bind(Include = "Id,Name,Created,TherapistId,IsDeleted,AssignedToUserId, CompanyId")] Plan plan)
         {
             if (ModelState.IsValid)
             {
                 //plan.TherapistId = User.Identity.GetUserId();
                 //ApplicationUser user = db.Users.Find(plan.TherapistId);
                 //plan.Users.Add(user);
+                var userId = User.Identity.GetUserId();
+                
+
                 plan.Created = DateTime.Now;
                 db.Plans.Add(plan);
                 db.SaveChanges();
@@ -173,6 +179,7 @@ namespace BehaveTherapy.Controllers
 
             List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
             var userId = User.Identity.GetUserId();
+            
 
             //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
             List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId).ToList();

@@ -16,7 +16,7 @@
     </div>
     <!-- Wrap -->
     <div class="wrap">
-       
+
         <!-- Main Section -->
         <section id="main">
 
@@ -30,12 +30,16 @@
                         </div>
                     </div>
                     <ol>
+                        Therapy Plans
                         @foreach (var item in Model.Plans.Take(10))
                         {
                             if (item.IsDeleted == false)
                             {
                                 <li>
                                     @Html.DisplayFor(modelItem => item.Name)
+                                </li>
+                                <li>
+                                    @Html.DisplayFor(modelItem => item.AssignedToUserId)
                                 </li>
 
                             }

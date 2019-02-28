@@ -17,7 +17,15 @@ namespace BehaveTherapy.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            var userPlans = db.Plans.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
+            //below only works if one l=plan, do not have a Plans/Users table or many to many relationship, what the hell!!!!
+            // var userPlans = db.Plans.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
+            var userPlans = db.Plans.Where(p => p.TherapistId == userId).ToList();
+
+            var userClients = db.Users.Where(u => u.Plan.All(p => p.TherapistId == userId)).ToList();
+
+            //Actually, I want to show client, therapy plan and exercise with count next to each one.
+            
+
             var userExercises = db.Exercises.Where(n => n.AssignedToUserId == userId).ToList();
             //var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
 
@@ -27,7 +35,8 @@ namespace BehaveTherapy.Controllers
             {
                 Plans = userPlans,
                 //PlanNotifications = userPlanNotifications,
-                Exercises = userExercises
+                Exercises = userExercises,
+                Users = userClients,
             };
 
             return View(model);
