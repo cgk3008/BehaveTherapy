@@ -1,5 +1,6 @@
 ﻿@model BehaveTherapy.Models.DashboardViewModel
 
+
 @{
 
     ViewBag.Title = "Dashboard";
@@ -29,25 +30,51 @@
                             <h4 class="wow fadeInRight">Click on the tabs to preview the various groups of instructional videos.</h4>
                         </div>
                     </div>
-                    <ol>
-                        Therapy Plans
-                        @foreach (var item in Model.Plans.Take(10))
-                        {
-                            if (item.IsDeleted == false)
+                    @if (User.IsInRole("Therapist") || User.IsInRole("Client"))
+                    {
+                        <H3>Therapy Plans</H3>
+                        <ol>
+
+                            @foreach (var item in Model.Plans.Take(10))
                             {
-                                <li>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </li>
-                                <li>
-                                    @Html.DisplayFor(modelItem => item.AssignedToUserId)
-                                </li>
+                                if (item.IsDeleted == false)
+                                {
+                                    <li>
+                                        @Html.DisplayFor(modelItem => item.Name) |  @Html.DisplayFor(modelItem => item.AssignedToUserId) | 
+                                        
+                                       @*@foreach (var x in Model.Exercises)
+                                       {
+                                        @Html.ActionLink( item.Exercises.Where( e => e.Id == x.Id)
+
+
+                                       x.Plans.Where( e => e.Id == item.Id)
+                                       
+                                       , "Detail", "Exercises", new { id = x.Id }, null)
+                                       }*@
+
+                                        @*Trying to add exercises in the Plan with Exercise Title as actionlink
+
+                                            @foreach (var exerc in Model.Exercises.Take(10))
+                                            {
+                                                if (exerc.IsDeleted == false)
+                                                {
+                                                    @Html.ActionLink(model => exerc.Title, "Detail", "Exercises", new { id = exerc.Id }, null))
+                                                }
+
+                                            }*@
+
+
+                                    </li>
+
+
+                                }
 
                             }
 
-                        }
+                        </ol>
+                    }
 
-                    </ol>
-
+                   
 
                     <!-- Tab -->
                     <h2>Horizontal Tab</h2>

@@ -19,8 +19,8 @@ namespace BehaveTherapy.Models
         public string CompanyId { get; set; }
 
         //public virtual Company Company { get; set; }
-        public virtual ApplicationUser Therapist { get; set; }
-        public virtual ApplicationUser AssignedToUser { get; set; }
+        //public virtual ApplicationUser Therapist { get; set; }
+        //public virtual ApplicationUser AssignedToUser { get; set; }
 
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<Company> Companies { get; set; }

@@ -11,6 +11,7 @@ namespace BehaveTherapy.Models
         public IEnumerable<Exercises> Exercises { get; set; }
         public IEnumerable<PlanNotifications> PlanNotifications { get; set; }
         public IEnumerable<ApplicationUser> Users { get; set; }
+        public ApplicationUser User { get; set; }
 
 
 

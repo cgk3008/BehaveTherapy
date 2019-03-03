@@ -19,14 +19,20 @@ namespace BehaveTherapy.Controllers
 
             //below only works if one l=plan, do not have a Plans/Users table or many to many relationship, what the hell!!!!
             // var userPlans = db.Plans.Where(p => p.Users.Any(u => u.Id == userId)).ToList();
-            var userPlans = db.Plans.Where(p => p.TherapistId == userId).ToList();
+            var userPlans = db.Plans.Where(p => p.TherapistId == userId || p.AssignedToUserId == userId).ToList();
 
-            var userClients = db.Users.Where(u => u.Plan.All(p => p.TherapistId == userId)).ToList();
 
-            //Actually, I want to show client, therapy plan and exercise with count next to each one.
-            
+            //below is not what I want
+            var userClients = db.Users.Where(u => u.Plan.All(p => p.TherapistId == userId )).ToList();
 
+            //Actually, I want to show client, therapy plan and exercise Titles in Plan with count next to each one.
+
+            //I thought below should work for Client dashboard
             var userExercises = db.Exercises.Where(n => n.AssignedToUserId == userId).ToList();
+
+            //separate dashboard for Company Admin????
+
+
             //var userPlanNotifications = db.PlanNotifications.Where(n => n.UserId == userId).ToList();
 
 
@@ -41,6 +47,26 @@ namespace BehaveTherapy.Controllers
 
             return View(model);
         }
+
+        //{
+        //    var userId = User.Identity.GetUserId();
+
+        //    var userPlans = db.Plans.Where(p => p.TherapistId == userId).ToList();
+
+        //    List<DashboardViewModel> model = new List<DashboardViewModel>();
+
+        //    foreach (var User in db.Users)
+        //    {
+        //        DashboardViewModel dashmodel = new DashboardViewModel();
+        //        dashmodel.User = User;
+        //        Plan = userPlans;
+        //        model.Add(dashmodel);
+        //    }
+        //    return View(model);
+
+        //}
+
+
 
         public ActionResult About()
         {

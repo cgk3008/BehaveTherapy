@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    //Layout = null;
 }
 
 <!DOCTYPE html>
@@ -103,10 +104,36 @@
             </dd>
 
         </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+
+        <div class="content margin-top60 margin-bottom60">
+            <div class="container">
+                <div class="row">
+
+                    <div class="post-image">
+                        <div class="embed-responsive embed-responsive-4by3">
+
+                            <!--Video code below may have still worked-->
+                            <!--<video controls="controls" width="100%" height="100%">
+                            <source src="~/Assets/Videos/SavageRace.mp4" type="video/mp4" />
+                        </video>-->
+                            <!--USED THIS STACKOVERFLOW ANSWER TO PROPERLY LOAD MP4s using web.config in video folder-->
+                            <!--https://stackoverflow.com/questions/6273607/windows-azure-serve-unknown-mp4-mime-types-in-windows-azure-iis-storage
+                                
+                                HAS TO BE AN MP4 or MP3!!!!-->
+                            <video controls="controls" src="@Model.FileUrl">
+                                
+                            </video>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
 </body>
 </html>

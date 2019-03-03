@@ -10,7 +10,6 @@ namespace BehaveTherapy.Models
     {
 
 
-        // I DON'T THINK I AM USING THIS MODEL ANYWHERE, CONFIRM AND DELETE
 
         
         public Plan Plan { get; set; }
@@ -19,6 +18,8 @@ namespace BehaveTherapy.Models
         //public User UserId { get; set; }
         public string UserId { get; set; }
 
-       // public virtual Plan Plan { get; set; }
+        public virtual ICollection<Exercises> Exercises { get; set; }
+
+        // public virtual Plan Plan { get; set; }
     }
 }

@@ -37,7 +37,12 @@
                     <th>
                         Assigned to Client
                     </th>
-                    <th></th>
+                    <th>
+                        Links
+                    </th>
+                    <th>
+                        Exercises
+                    </th>
                 </tr>
             </thead>
 
@@ -67,6 +72,14 @@
                             @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Plan.Id }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.Plan.Id })
+                        </td>
+                        <td>
+                            @*@foreach (var x in item.Exercises)
+                            {
+
+                            @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id})
+
+                            }*@
                         </td>
                     </tr>
 
