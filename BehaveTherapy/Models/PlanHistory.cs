@@ -8,7 +8,7 @@ namespace BehaveTherapy.Models
     public class PlanHistory
     {
         public int Id { get; set; }
-        public int TicketId { get; set; }
+        public int PlanId { get; set; }
         public string Property { get; set; }
         public string OldValue { get; set; }
         public string NewValue { get; set; }
