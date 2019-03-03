@@ -19,6 +19,7 @@ namespace BehaveTherapy.Models
         public string UserId { get; set; }
 
         public virtual ICollection<Exercises> Exercises { get; set; }
+        //public Exercises Exercises { get; set; }
 
         // public virtual Plan Plan { get; set; }
     }

@@ -74,12 +74,15 @@
                             @Html.ActionLink("Delete", "Delete", new { id = item.Plan.Id })
                         </td>
                         <td>
-                            @*@foreach (var x in item.Exercises)
-                            {
+                            
+                            @foreach (var x in item.Exercises)
+        {
 
-                            @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id})
+        @Html.ActionLink(x.Title, "Details", "Exercises",  new { id = x.Id}, null) 
+                               <br/>
 
-                            }*@
+
+        }
                         </td>
                     </tr>
 

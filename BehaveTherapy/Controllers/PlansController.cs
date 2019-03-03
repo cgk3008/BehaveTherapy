@@ -183,8 +183,9 @@ namespace BehaveTherapy.Controllers
 
             //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
             List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId || u.AssignedToUserId == userId).ToList();
-            //List<Exercises> exercises = 
-            
+            //List<Exercises> exercises = db.Exercises.Where( e => e.Id == plans.)
+
+
 
             foreach (Plan plan in plans)
             {
@@ -192,7 +193,8 @@ namespace BehaveTherapy.Controllers
                 {
                     Plan = plan,
                     Therapist = db.Users.Find(plan.TherapistId),
-                    //Exercises = db.Exercises.,
+                    //why was I making code below so difficult, already had the exercies in the plan object!!!!
+                    Exercises = plan.Exercises.ToList(),
                     //Exercises = db.Exercises.Where( e => e.Plans.Where(p => p.Id == plan.Id)),
                     UserId = userId
                 };
