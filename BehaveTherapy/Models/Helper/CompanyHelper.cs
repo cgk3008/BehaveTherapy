@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace BehaveTherapy.Models.Helper
     public class CompanyHelper
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        //private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
         public Exception AddUserToCompany(string userId, int companyId)
         {
@@ -46,14 +50,38 @@ namespace BehaveTherapy.Models.Helper
             return db.Companies.Find(companyId).Users.ToList();
         }
 
+        public ICollection<ApplicationUser> ListClientsInCompany(int companyId)
+        {
+            //UserRolesHelper helper = new UserRolesHelper();           
+            //var clientList = helper.ListUsersInRole("Client");
+            List<ApplicationUser> roleUsers = new List<ApplicationUser>();
+            List<ApplicationUser> users =db.Companies.Find(companyId).Users.ToList();
+
+
+            return ;
+
+
+
+            //foreach (var u in users)
+            //{
+            //    if (IsUserInRole(u.Id, Role))
+            //    {
+            //        roleUsers.Add(u);
+            //    }
+            //}
+            //return roleUsers;
+
+
+        }
+
         public Exception ListUserCompanyId(string userId)
         {
             try
-            {                
+            {
                 var usr = db.Users.Find(userId);
                 //List<Company> companies = db.Users.Find(userId).Plan.
 
-               // var userCompany = db.Users.Where(u => u.)
+                // var userCompany = db.Users.Where(u => u.)
 
 
                 //company.Users.Remove(usr);

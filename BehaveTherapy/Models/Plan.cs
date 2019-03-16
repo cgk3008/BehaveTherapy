@@ -17,7 +17,7 @@ namespace BehaveTherapy.Models
         public string TherapistId { get; set; }
         public bool IsDeleted { get; set; }
         public string AssignedToUserId { get; set; }
-        public string CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         public int? PlanTypeId { get; set; }
         public int? PlanPriorityId { get; set; }
         public int? PlanStatusId { get; set; }

@@ -127,6 +127,19 @@ namespace BehaveTherapy.Controllers
             {
                 return HttpNotFound();
             }
+            var userCompany = plan.CompanyId.GetValueOrDefault();
+            UserRolesHelper helper = new UserRolesHelper();
+            //does below also limit to same company as logged in user???
+            var clientList = helper.ListUsersInRole("Client");
+            CompanyHelper compHelper = new CompanyHelper();
+            var companyClients = compHelper.ListUsersInCompany(userCompany);
+
+            ViewBag.AssignedToUserId = new SelectList(companyClients, "Id", "FullName", plan.AssignedToUserId);
+            ViewBag.TherapistId = new SelectList(db.Users, "Id", "FullName", plan.TherapistId);
+            ViewBag.PlanPriorityId = new SelectList(db.PlanPriorities, "Id", "Name", plan.PlanPriorityId);          
+            ViewBag.PlanStatusId = new SelectList(db.PlanStatus, "Id", "Name", plan.PlanStatusId);
+            ViewBag.PlanType = new SelectList(db.PlanTypes, "Id", "Name", plan.PlanTypeId);
+
             return View(plan);
         }
 

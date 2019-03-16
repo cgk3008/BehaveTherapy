@@ -40,14 +40,16 @@ namespace BehaveTherapy.Models.Helper
         }
 
         //modify this? see ListRolesNotForUser, string not "User"
+        //add more code to limit to roles and same company or use CompanyHelper!!!!
         public ICollection<ApplicationUser> ListUsersInRole(string Role)
         {
             List<ApplicationUser> roleUsers = new List<ApplicationUser>();
             List<ApplicationUser> users = userManager.Users.ToList();
+            
 
             foreach (var u in users)
             {
-                if (IsUserInRole(u.Id, Role))
+                if (IsUserInRole(u.Id, Role)  )
                 {
                     roleUsers.Add(u);
                 }
