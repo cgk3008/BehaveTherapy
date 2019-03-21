@@ -68,13 +68,13 @@
                             @Html.DisplayFor(modelItem => item.Created, "{0:dd-MMM-yyyy}")
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TherapistId)
+                            @Html.DisplayFor(modelItem => item.Therapist.FullName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.IsDeleted)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.AssignedToUserId)
+                            @Html.DisplayFor(modelItem => item.AssignedToUser.FullName)
                         </td>
 
                         @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))

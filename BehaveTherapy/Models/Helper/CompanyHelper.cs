@@ -45,8 +45,9 @@ namespace BehaveTherapy.Models.Helper
             }
         }
 
-        public ICollection<ApplicationUser> ListUsersInCompany(int companyId)
+        public ICollection<ApplicationUser> ListUsersInCompanyFromPlan(int? planId)
         {
+            var companyId = db.Plans.Find(planId).CompanyId.Value;
             return db.Companies.Find(companyId).Users.ToList();
         }
 
@@ -54,11 +55,16 @@ namespace BehaveTherapy.Models.Helper
         {
             //UserRolesHelper helper = new UserRolesHelper();           
             //var clientList = helper.ListUsersInRole("Client");
-            List<ApplicationUser> roleUsers = new List<ApplicationUser>();
-            List<ApplicationUser> users =db.Companies.Find(companyId).Users.ToList();
+
+            //List<ApplicationUser> roleUsers = new List<ApplicationUser>();
+            //List<ApplicationUser> users = db.Companies.Find(companyId).Users.ToList();
 
 
-            return ;
+            //so below gets users in company, but want to drill down to roles and get just clients
+
+
+
+            return db.Companies.Find(companyId).Users.ToList(); ;
 
 
 

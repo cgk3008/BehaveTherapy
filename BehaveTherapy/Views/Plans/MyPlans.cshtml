@@ -69,13 +69,13 @@
                             @Html.DisplayFor(modelItem => item.Plan.Created, "{0:dd-MMM-yyyy}")
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Plan.TherapistId)
+                            @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Plan.AssignedToUserId)
+                            @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id }) |
