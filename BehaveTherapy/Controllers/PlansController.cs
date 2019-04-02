@@ -128,11 +128,6 @@ namespace BehaveTherapy.Controllers
                 return HttpNotFound();
             }
 
-            //var userCompany = plan.CompanyId.GetValueOrDefault();
-            //UserRolesHelper helper = new UserRolesHelper();
-            ////does below also limit to same company as logged in user???
-            //var clientList = helper.ListUsersInRole("Client");
-
             CompanyHelper compHelper = new CompanyHelper();
             var companyUsers = compHelper.ListUsersInCompanyFromPlan(id);
             ViewBag.AssignedToUserId = new SelectList(companyUsers, "Id", "FullName", plan.AssignedToUserId);
@@ -140,8 +135,6 @@ namespace BehaveTherapy.Controllers
             UserRolesHelper userRoles = new UserRolesHelper();
             var therapists = userRoles.ListUsersInRole("Therapist").ToList();
             ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName", plan.TherapistId);       
-
-
             //ViewBag.PlanPriorityId = new SelectList(db.PlanPriorities, "Id", "Name", plan.PlanPriorityId);  
             //ViewBag.PlanStatusId = new SelectList(db.PlanStatus, "Id", "Name", plan.PlanStatusId);
             //ViewBag.PlanType = new SelectList(db.PlanTypes, "Id", "Name", plan.PlanTypeId);
@@ -158,11 +151,51 @@ namespace BehaveTherapy.Controllers
         {
             if (ModelState.IsValid)
             {
+                plan.CreateHistories();
+
                 db.Entry(plan).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                //for notifiation of changes to ticket PM and asssigned developer
+                //var callbackUrl = Url.Action("Details", "Tickets", new { id = model.Id }, protocol: Request.Url.Scheme);
+                //    try
+                //    {
+                //        EmailService ems = new EmailService();
+                //        IdentityMessage msg = new IdentityMessage();
+                //        //User user = db.Users.Find(model.AssignedToUserId);
+                //        User user = db.Users.Find(model.AssignedToUserId);
+
+                //        msg.Body = "New Ticket Change." + Environment.NewLine + "Please click the following link to view the details " + "<a href=\"" + callbackUrl + "\">CHANGE TO YOUR TICKET</a>";
+
+                //        msg.Destination = user.Email;
+                //        msg.Subject = "Changes to your ticket";
+                //        await ems.SendMailAsync(msg);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        await Task.FromResult(0);
+                //    }
+                //    if (User.IsInRole("Admin"))
+                //    {
+                //        return RedirectToAction("Index");
+                //    }
+                //    else
+                //    {
+                //        return RedirectToAction("MyTickets");
+                //    }
+                //}
+
+                //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FullName", model.OwnerUserId);
+                //ViewBag.TicketPriorityId = new SelectList(db.Priority, "Id", "Name", model.TicketPriorityId);
+                //ViewBag.ProjectId = new SelectList(db.Project, "Id", "Name", model.ProjectId);
+                //ViewBag.TicketStatusId = new SelectList(db.Status, "Id", "Name", model.TicketStatusId);
+                //ViewBag.TicketTypeId = new SelectList(db.Type, "Id", "Name", model.TicketTypeId);
+                //return View(model);
+
+                //return RedirectToAction("Index");
             }
-            return View(plan);
+            return RedirectToAction("Index");
+            //return View(plan);
         }
 
         // GET: Plans/Delete/5

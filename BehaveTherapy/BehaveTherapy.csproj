@@ -224,7 +224,6 @@
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper\CompanyHelper.cs" />
     <Compile Include="Models\Helper\Extension.cs" />
-    <Compile Include="Models\Helper\OldNewTherapyPlanHelper.cs" />
     <Compile Include="Models\Helper\PlanHelper.cs" />
     <Compile Include="Models\Helper\UserRolesHelper.cs" />
     <Compile Include="Models\Plan.cs" />
