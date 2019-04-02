@@ -11,7 +11,7 @@ namespace BehaveTherapy.Models.Helper
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        private UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
         public Exception AddUserToCompany(string userId, int companyId)
         {
@@ -49,6 +49,21 @@ namespace BehaveTherapy.Models.Helper
         {
             var companyId = db.Plans.Find(planId).CompanyId.Value;
             return db.Companies.Find(companyId).Users.ToList();
+
+
+            //List<ApplicationUser> companyUsers = new List<ApplicationUser>();
+            //List<ApplicationUser> users = userManager.Users.ToList();
+
+            //foreach (var u in users)
+            //{
+            //    if (u. )
+            //    {
+            //        roleUsers.Add(u);
+            //    }
+            //}
+
+
+
         }
 
         public ICollection<ApplicationUser> ListClientsInCompany(int companyId)

@@ -135,22 +135,16 @@ namespace BehaveTherapy.Controllers
 
             CompanyHelper compHelper = new CompanyHelper();
             var companyUsers = compHelper.ListUsersInCompanyFromPlan(id);
-
-
-            ViewBag.AssignedToUserId = new SelectList(companyUsers, "Id", "FullName", plan.AssignedToUser);
+            ViewBag.AssignedToUserId = new SelectList(companyUsers, "Id", "FullName", plan.AssignedToUserId);
 
             UserRolesHelper userRoles = new UserRolesHelper();
             var therapists = userRoles.ListUsersInRole("Therapist").ToList();
-            ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName", plan.Therapist);
+            ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName", plan.TherapistId);       
 
 
-            ViewBag.PlanPriorityId = new SelectList(db.PlanPriorities, "Id", "Name", plan.PlanPriorityId);  
-            
-
-            ViewBag.PlanStatusId = new SelectList(db.PlanStatus, "Id", "Name", plan.PlanStatusId);
-
-
-            ViewBag.PlanType = new SelectList(db.PlanTypes, "Id", "Name", plan.PlanTypeId);
+            //ViewBag.PlanPriorityId = new SelectList(db.PlanPriorities, "Id", "Name", plan.PlanPriorityId);  
+            //ViewBag.PlanStatusId = new SelectList(db.PlanStatus, "Id", "Name", plan.PlanStatusId);
+            //ViewBag.PlanType = new SelectList(db.PlanTypes, "Id", "Name", plan.PlanTypeId);
 
             return View(plan);
         }

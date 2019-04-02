@@ -68,14 +68,7 @@ namespace BehaveTherapy.Models.Helper
                 ApplicationUser newlyAssignedUser = db.Users.Find(editedPlan.AssignedToUserId);
 
                 histories.Add(new PlanHistory()
-                {
-                    // You'll want to use user properties that are required, so that you will know that there will be a value to be displayed
-                    // Here I am using interpolated strings, using the FirstName and LastName properties to build the users' full name
-                    // This assumes that these two properties are required
-                    //OldValue = $"{previouslyAssignedUser.FirstName} {previouslyAssignedUser.LastName}",
-                    //NewValue = $"{newlyAssignedUser.FirstName} {newlyAssignedUser.LastName}",
-                    //Property = "Assigned User"
-
+                {         
                     OldValue = previouslyAssignedUser.FullName,
                     NewValue = newlyAssignedUser.FullName,
                     Property = "Assigned User"
