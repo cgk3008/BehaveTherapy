@@ -147,7 +147,7 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Created,TherapistId,IsDeleted,AssignedToUserId")] Plan plan)
+        public ActionResult Edit([Bind(Include = "Id,Name,Created,TherapistId,IsDeleted,AssignedToUserId, CompanyId")] Plan plan)
         {
             if (ModelState.IsValid)
             {
