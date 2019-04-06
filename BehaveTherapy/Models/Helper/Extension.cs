@@ -35,7 +35,7 @@ namespace BehaveTherapy.Models.Helper
             return list.Contains(source, StringComparer.OrdinalIgnoreCase);
         }
 
-
+        //Need to add Exercise history and number of clicks, dates exercises were documented performed        
         public static void CreateHistories(this Plan editedPlan)
         {
             List<PlanHistory> histories = new List<PlanHistory>();

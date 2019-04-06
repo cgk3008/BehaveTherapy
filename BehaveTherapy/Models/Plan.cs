@@ -29,12 +29,14 @@ namespace BehaveTherapy.Models
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
+        public virtual ICollection<PlanHistory> Histories { get; set; }
 
         public Plan()
         {
             Companies = new HashSet<Company>();
             Users = new HashSet<ApplicationUser>();
             Exercises = new HashSet<Exercises>();
+            Histories = new HashSet<PlanHistory>();
 
         }
     }

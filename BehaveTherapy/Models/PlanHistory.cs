@@ -17,6 +17,7 @@ namespace BehaveTherapy.Models
 
 
         public virtual Exercises Exercise { get; set; }
+        public virtual Plan Plan { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
 }
