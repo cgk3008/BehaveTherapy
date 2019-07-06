@@ -35,12 +35,14 @@ namespace BehaveTherapy.Models
         public virtual ICollection<Plan> Plans { get; set; }
         public virtual ICollection<PlanHistory> Histories { get; set; }
         public virtual ICollection<PlanNotifications> PlanNotifications { get; set; }
+        public virtual ICollection<ExerciseLog> Logs { get; set; }
 
         public Exercises()
         {
             Plans = new HashSet<Plan>();
             Histories = new HashSet<PlanHistory>();
             PlanNotifications = new HashSet<PlanNotifications>();
+            Logs = new HashSet<ExerciseLog>();
         }
 
 

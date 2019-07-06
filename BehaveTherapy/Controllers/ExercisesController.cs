@@ -39,8 +39,51 @@ namespace BehaveTherapy.Controllers
             return View(exercises);
         }
 
-        // GET: Exercises/Create
-        public ActionResult Create()
+        // POST: Exercises/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "Id,Title,Description,PlanId,Created,Updated,TimeZoneCreated,StartDate,CompletionDate,DeadlineDate,AssignedToUserId, FileUrl")] Exercises exercises, Plan plan)
+        {
+            //try
+            //{
+            //    if (file.ContentLength > 0)
+            //        if (ModelState.IsValid)
+            //        {
+            //            //if (UploadImageValidator.IsWebFriendlyImage(image))
+            //            //{
+            //            var fileName = Path.GetFileName(file.FileName);
+            //            file.SaveAs(Path.Combine(Server.MapPath("~/UploadVideo/"), fileName));
+            //            exercises.FileUrl = "/UploadVideo/" + fileName;
+            //            //}
+
+            //            exercises.Created = DateTime.Now;
+
+            //            db.Exercises.Add(exercises);
+            //            db.SaveChanges();
+
+            //            ViewBag.Message = "Uploaded File Saved Successfully in folder";
+            //            return RedirectToAction("Index");
+            //        }
+            //}
+
+            //catch
+            //{
+            //    ViewBag.Message = "Uploaded File not saved!!!!!!!!!!";
+            //    return View();
+            //}
+
+            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", exercises.AssignedToUserId);
+            ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name");
+            return View(exercises);
+
+        }
+
+
+
+            // GET: Exercises/Create
+            public ActionResult Create()
         {
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName");
             ViewBag.PlanId = new SelectList(db.Plans, "Id", "Name");

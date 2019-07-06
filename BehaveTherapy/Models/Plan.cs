@@ -25,11 +25,13 @@ namespace BehaveTherapy.Models
         public virtual Company Company { get; set; }
         public virtual ApplicationUser Therapist { get; set; }
         public virtual ApplicationUser AssignedToUser { get; set; }
+        
 
         public virtual ICollection<Exercises> Exercises { get; set; }
         public virtual ICollection<Company> Companies { get; set; }
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<PlanHistory> Histories { get; set; }
+        public virtual ICollection<ExerciseLog> Logs { get; set; }
 
         public Plan()
         {
@@ -37,6 +39,7 @@ namespace BehaveTherapy.Models
             Users = new HashSet<ApplicationUser>();
             Exercises = new HashSet<Exercises>();
             Histories = new HashSet<PlanHistory>();
+            Logs = new HashSet<ExerciseLog>();
 
         }
     }

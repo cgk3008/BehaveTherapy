@@ -14,6 +14,7 @@ namespace BehaveTherapy.Models
         public string NewValue { get; set; }
         public DateTimeOffset Changed { get; set; }
         public string UserId { get; set; }
+        public int? ExerciseId { get; set; }
 
 
         public virtual Exercises Exercise { get; set; }
