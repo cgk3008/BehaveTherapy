@@ -12,9 +12,9 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
+    <h2>
         @Html.ActionLink("Create New Exercise", "Create")
-    </p>
+    </h2>
 
 
     <div class="table-responsive">
@@ -30,7 +30,7 @@
                     <th>
                         Description
                     </th>
-                   
+
                     <th>
                         Created
                     </th>
@@ -62,51 +62,52 @@
                 {
 
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                  
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Updated, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartDate, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompletionDate, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeadlineDate, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AssignedToUserId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FileUrl)
-                    </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
 
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created, "{0:dd-MMM-yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated, "{0:dd-MMM-yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate, "{0:dd-MMM-yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompletionDate, "{0:dd-MMM-yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeadlineDate, "{0:dd-MMM-yyyy}")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssignedToUserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FileUrl)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
 
                 }
             </tbody>
 
         </table>
     </div>
+    <br />
 </body>
 </html>
 

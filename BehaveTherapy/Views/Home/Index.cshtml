@@ -40,7 +40,7 @@
                                 if (item.IsDeleted == false)
                                 {
                                     <li>
-                                        @Html.DisplayFor(modelItem => item.Name) |  @Html.DisplayFor(modelItem => item.AssignedToUserId) | 
+                                        @Html.DisplayFor(modelItem => item.Name) | Client:   @Html.DisplayFor(modelItem => item.AssignedToUser.FullName) 
                                         
                                        @*@foreach (var x in Model.Exercises)
                                        {

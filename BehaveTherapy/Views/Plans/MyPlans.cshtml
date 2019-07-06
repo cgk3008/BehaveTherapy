@@ -19,9 +19,9 @@
     @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
     {
 
-    <h3>@Html.ActionLink("Create New Plan", "Create") | <a href="~/Account/Register">Register New User</a></h3>
-        <br/>
-       
+        <h3>@Html.ActionLink("Create New Plan", "Create") | <a href="~/Account/Register">Register New User</a></h3>
+        <br />
+
     }
 
 
@@ -99,7 +99,8 @@
             </tbody>
 
         </table>
-    </div>
+
+    </div> <br />
 </body>
 </html>
 
