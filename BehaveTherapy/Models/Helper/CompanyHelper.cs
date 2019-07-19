@@ -97,6 +97,8 @@ namespace BehaveTherapy.Models.Helper
 
         public Exception ListUserCompanyId(string userId)
         {
+
+            //I don't think this is what I want for code below, overcomplicated?
             try
             {
                 var usr = db.Users.Find(userId);

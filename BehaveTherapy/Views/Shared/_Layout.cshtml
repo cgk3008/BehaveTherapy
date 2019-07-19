@@ -77,17 +77,17 @@
                         <div class="pull-left">
                             <ul class="social pull-left">
                                 @*<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li class="rss"><a href="#"><i class="fa fa-rss"></i></a></li>*@
+                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="rss"><a href="#"><i class="fa fa-rss"></i></a></li>*@
                                 <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a>
                                 <a href="#" data-toggle="modal" data-target="#registrationModal"><i class="fa fa-edit"></i> Registration</a>
                             </ul>
                         </div>
                         <div class="phone-login pull-right">
                             @*<a><i class="fa fa-phone"></i> Call Us : +880 111-111-111</a>*@
-                         
+
 
                             <h2> @Html.Partial("_LoginPartial")</h2>
 
@@ -149,13 +149,40 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a @Html.ActionLink("Admin Role Index", "Index", "Admin")</a>
-                                        <a @Html.ActionLink("Create Company", "Create", "Companies")</a>
-                                        <a @Html.ActionLink("Company Index", "Index", "Companies")</a>
-                                        @*<a @Html.ActionLink("Create Therapy Plan", "Create", "TherapyPlans")</a>*@
-                                        <a @Html.ActionLink("Create Therapy Plan", "Create", "Plans")</a>
-                                        <a @Html.ActionLink("Therapy Plan Index", "Index", "Plans")</a>
-                                        <a @Html.ActionLink("Admin Company Index", "Index", "AdminCompanies")</a>
+                                        @if (User.IsInRole("Admin"))
+    {
+
+                                    @Html.ActionLink("Admin Role Index", "Index", "Admin")
+
+                                    @Html.ActionLink("Company Index", "Index", "Companies")
+
+                                    @Html.ActionLink("Admin Company Index", "Index", "AdminCompanies")
+
+}
+
+                                        @if (User.IsInRole("CompanyAdmin") || User.IsInRole("Admin"))
+    {
+                                    @Html.ActionLink("Create Company", "Create", "Companies")
+}
+
+                                        @if (User.IsInRole("Therapist") || User.IsInRole("CompanyAdmin") || User.IsInRole("Admin"))
+    {
+                                    @Html.ActionLink("Create Therapy Plan", "Create", "Plans")
+
+                                  
+}
+
+                                        @if ( User.IsInRole("CompanyAdmin") || User.IsInRole("Admin"))
+    {
+                                   
+
+                                    @Html.ActionLink("Therapy Plan Index", "Index", "Plans")
+}
+
+
+
+
+
                                     </li>
                                 </ul>
                             </li>
@@ -168,8 +195,12 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a @Html.ActionLink("Plans Index", "Index", "Plans")</a>
-                                        <a @Html.ActionLink("My Plans", "MyPlans", "Plans")</a>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Company Admin"))
+                                        {
+                                     @Html.ActionLink("Plans Index", "Index", "Plans")
+                                        }
+
+                                    @Html.ActionLink("My Plans", "MyPlans", "Plans")
                                     </li>
 
                                 </ul>
@@ -183,12 +214,14 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a @Html.ActionLink("Exercise Index", "Index", "Exercises")</a>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Therapist") || User.IsInRole("Company Admin"))
+                                        {
+                                    @Html.ActionLink("Exercise Index", "Index", "Exercises")
+                                    
+                                         @Html.ActionLink("Create Exercise", "Create", "Exercises")
+                                        }
                                     </li>
-                                    <li>
-                                        <a @Html.ActionLink("Create Exercise", "Create", "Exercises")</a>
-                                    </li>
-
+                                        
                                 </ul>
                             </li>
                             <li>
@@ -215,45 +248,45 @@
 
             @RenderBody()
 
-            </div>
         </div>
-            <!-- The Scripts -->
+    </div>
+    <!-- The Scripts -->
 
-            <script>
-                $('#mytable').DataTable();
-            </script>
+    <script>
+        $('#mytable').DataTable();
+    </script>
 
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-migrate-1.0.0.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-ui.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/bootstrap.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.parallax.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.wait.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/fappear.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/modernizr-2.6.2.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.bxslider.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.prettyPhoto.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/superfish.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tweetMachine.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tytabs.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.gmap.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.sticky.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.countTo.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jflickrfeed.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/imagesloaded.pkgd.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/waypoints.min.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/wow.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.fitvids.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/spectrum.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/switcher.js"></script>
-            <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/custom.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-migrate-1.0.0.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery-ui.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/bootstrap.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.parallax.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.wait.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/fappear.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.bxslider.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/superfish.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tweetMachine.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/tytabs.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.gmap.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.sticky.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.countTo.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jflickrfeed.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/waypoints.min.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/wow.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/jquery.fitvids.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/spectrum.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/switcher.js"></script>
+    <script src="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/js/custom.js"></script>
 
 
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </body>
 </html>
 

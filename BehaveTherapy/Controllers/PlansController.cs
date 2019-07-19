@@ -231,7 +231,7 @@ namespace BehaveTherapy.Controllers
 
             List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
             var userId = User.Identity.GetUserId();
-            
+          
 
             //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
             List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId || u.AssignedToUserId == userId).ToList();

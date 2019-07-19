@@ -66,7 +66,7 @@
                             @Html.DisplayFor(modelItem => item.Plan.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Plan.Created, "{0:dd-MMM-yyyy}")
+                            @Html.DisplayFor(modelItem => item.Plan.Created.DateTime, "{0:dd-MMM-yyyy}")
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
@@ -86,12 +86,14 @@
 
                             @foreach (var x in item.Exercises)
                             {
+                                <li>
 
-                                @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
-                                <br />
-
+                                    @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
+                                    <br />
+                                </li>
 
                             }
+
                         </td>
                     </tr>
 
