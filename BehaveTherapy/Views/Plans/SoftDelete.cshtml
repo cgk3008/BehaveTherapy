@@ -63,20 +63,23 @@
 
         @using (Html.BeginForm())
         {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.Name)
-        @Html.HiddenFor(model => model.TherapistId)
-        @Html.HiddenFor(model => model.Created)
-        @Html.HiddenFor(model => model.AssignedToUserId)
-        @Html.HiddenFor(model => model.CompanyId)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Name)
+            @Html.HiddenFor(model => model.TherapistId)
+            @Html.HiddenFor(model => model.Created)
+            @Html.HiddenFor(model => model.AssignedToUserId)
+            @Html.HiddenFor(model => model.CompanyId)
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Yes, Soft Delete Therapy Plan" class="btn btn-warning" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-        <br />
+            <div class="form-actions no-color">
+                <input type="submit" value="Yes, Soft Delete Therapy Plan" class="btn btn-warning" /> |
+
+            </div>
+            <br />
         }
+    </div>
+    <div>
+        @Html.ActionLink("Back to My Plans", "MyPlans")
     </div>
 </body>
 </html>

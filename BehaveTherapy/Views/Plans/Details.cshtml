@@ -19,7 +19,7 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-               Therapy Plan Name
+                Therapy Plan Name
             </dt>
 
             <dd>
@@ -51,7 +51,7 @@
             </dd>
 
             <dt>
-               Client
+                Client
             </dt>
 
             <dd>
@@ -62,18 +62,20 @@
             </dt>
 
             @foreach (var exercise in Model.Exercises)
-        {
-            <dd>
-                @Html.DisplayFor(model => exercise.Title)
-            </dd>
-    }
+            {
+                <dd>
+                    @Html.DisplayFor(model => exercise.Title)
+                </dd>
+            }
 
 
         </dl>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+
+        @Html.ActionLink("Back to My Plans", "MyPlans")
+
     </p>
 
 
@@ -106,40 +108,41 @@
             <tbody>
 
                 @foreach (var item in Model.Histories)
-            {
+                {
 
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.Name)
-                    </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Plan.Name)
+                        </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Property)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OldValue)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NewValue)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Changed.DateTime)
-                    </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Property)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OldValue)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewValue)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Changed.DateTime)
+                        </td>
 
 
 
-                </tr>
+                    </tr>
 
-        }
+                }
             </tbody>
 
         </table>
         <br />
     </div>
+   
 </body>
 </html>
 

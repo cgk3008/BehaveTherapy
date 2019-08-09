@@ -66,50 +66,50 @@
                     if (item.Plan.IsDeleted == true)
                     {
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.Created.DateTime, "{0:dd-MMM-yyyy}")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
-                    </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.Created.DateTime, "{0:dd-MMM-yyyy}")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
+                            </td>
 
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
-                    </td>
-                    <td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
+                            </td>
+                            <td>
 
-                        @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
+                                @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
 
-                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
-        {<text
+                                @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
+                                {<text
                             > | </text>
 
-                @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })
 
-}
-                    </td>
-                    <td>
+                            }
+                            </td>
+                            <td>
 
-                        @foreach (var x in item.Exercises)
-        {
-                <li>
+                                @foreach (var x in item.Exercises)
+                                {
+                                    <li>
 
-                    @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
-                    <br />
-                </li>
+                                        @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
+                                        <br />
+                                    </li>
 
-}
+                                }
 
-                    </td>
-                </tr>
+                            </td>
+                        </tr>
                     }
 
                 }
@@ -118,6 +118,9 @@
         </table>
 
     </div> <br />
+           <div>
+               @Html.ActionLink("Back to My Plans", "MyPlans")
+           </div>
 </body>
 </html>
 
