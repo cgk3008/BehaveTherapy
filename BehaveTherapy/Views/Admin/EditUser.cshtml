@@ -23,29 +23,30 @@
 
 
             @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+    {
+        @Html.AntiForgeryToken()
 
 
-                @Html.HiddenFor(m => m.User.Id)
+        @Html.HiddenFor(m => m.User.Id)
 
 
-            <h3> @Model.User.FullName;</h3>
+        <h3> @Model.User.FullName</h3>
 
-            <br />
-
-                
+        <br />
 
 
 
-                @Html.DropDownList("SelectedRoles", Model.Roles, new { @class = "control-label col-md-2" })
 
 
-                <br />
+        @Html.DropDownList("SelectedRoles", Model.Roles, new { @class = "control-label col-md-2" })
 
-                <p><input type="submit" class="btn btn-info" /></p>
 
-            }
+        <br />
+        <br />
+
+        <p><input type="submit" class="btn btn-info" /></p>
+
+}
             <br />
 
         </div>

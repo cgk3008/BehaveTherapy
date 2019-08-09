@@ -7,9 +7,9 @@
 
 <h2>Index</h2>
 
-<p>
+<h3>
     @Html.ActionLink("Create New Company", "Create")
-</p>
+</h3>
 
 
 <div class="table-responsive">
@@ -34,7 +34,12 @@
                 <th>
                     Is Deleted
                 </th>
-                <th></th>
+                <th> Email </th>
+                <th> Phone </th>
+                <th> Fax </th>
+                <th>
+                    Links
+                </th>
             </tr>
         </thead>
 
@@ -61,6 +66,15 @@
                         @Html.DisplayFor(modelItem => item.IsDeleted)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fax)
+                    </td>
+                    <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
@@ -68,8 +82,11 @@
                 </tr>
             }
         </tbody>
+        <br />
 
     </table>
+    <br />
+
 </div>
 
 <script>

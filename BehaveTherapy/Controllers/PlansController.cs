@@ -134,7 +134,13 @@ namespace BehaveTherapy.Controllers
 
             UserRolesHelper userRoles = new UserRolesHelper();
             var therapists = userRoles.ListUsersInRole("Therapist").ToList();
-            ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName", plan.TherapistId);       
+            ViewBag.TherapistId = new SelectList(therapists, "Id", "FullName", plan.TherapistId);
+
+            var clients = userRoles.ListUsersInRole("Client").ToList();
+            ViewBag.AssignedToUserId = new SelectList(clients, "Id", "FullName");
+
+            var companies = db.Companies.ToList();
+            ViewBag.CompanyId = new SelectList(companies, "Id", "CompanyName");
             //ViewBag.PlanPriorityId = new SelectList(db.PlanPriorities, "Id", "Name", plan.PlanPriorityId);  
             //ViewBag.PlanStatusId = new SelectList(db.PlanStatus, "Id", "Name", plan.PlanStatusId);
             //ViewBag.PlanType = new SelectList(db.PlanTypes, "Id", "Name", plan.PlanTypeId);
@@ -223,6 +229,41 @@ namespace BehaveTherapy.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: Projects/SoftDelete
+        public ActionResult SoftDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Plan plan = db.Plans.Find(id);
+            if (plan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(plan);
+        }
+
+        // POST: Projects/SoftDelete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //"Id,Name,Created,TherapistId,IsDeleted,AssignedToUserId, CompanyId")] Plan plan)
+        public ActionResult SoftDelete([Bind(Include = "Id, Name, Created, TherapistId,IsDeleted, AssignedToUserId, CompanyId")] Plan plan)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(plan).State = EntityState.Modified;
+                plan.IsDeleted = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+
+            return View(plan);
+        }
+
 
         // GET: MyProjects
         [Authorize]

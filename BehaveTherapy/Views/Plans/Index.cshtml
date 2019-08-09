@@ -80,15 +80,16 @@
                         @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
                         {
 
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Id })
+                        </td>
 
 
                             <td>
-                                @Html.ActionLink("Add Exercise to Plan", "AddExercise", "AddRmvExerciseToPlan", new { id = item.Id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Add Exercise", "AddExercise", "AddRmvExerciseToPlan", new { id = item.Id }, new { @class = "btn btn-success" })
                             </td>
 
                             <td>
@@ -98,8 +99,9 @@
                                     {
                                         <li>
                                             @ex.Title
-                                            
-                                            @Html.ActionLink("Remove Exercise", "RemoveExercise", "AddRmvExerciseToPlan", new { planId = item.Id, exId = ex.Id }, new { @class = "btn-sm btn-warning" })
+                                           
+                                           
+                                            @Html.ActionLink("Remove", "RemoveExercise", "AddRmvExerciseToPlan", new { planId = item.Id, exId = ex.Id }, new { @class = "btn-sm btn-warning" })
                                             <br />
                                             <br />
                                         </li>

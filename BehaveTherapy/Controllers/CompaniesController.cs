@@ -62,7 +62,7 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CompanyName,Address,City,State,ZipCode,IsDeleted")] Company company)
+        public ActionResult Create([Bind(Include = "Id,CompanyName,Address,City,State,ZipCode,IsDeleted, Email, Phone, Fax")] Company company)
         {
             if (ModelState.IsValid /*&& company.Register.Equals(true)*/)
             {
@@ -116,7 +116,7 @@ namespace BehaveTherapy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,Address,City,State,ZipCode,IsDeleted")] Company company)
+        public ActionResult Edit([Bind(Include = "Id,CompanyName,Address,City,State,ZipCode,IsDeleted, Email, Phone, Fax")] Company company)
         {
             if (ModelState.IsValid)
             {

@@ -20,6 +20,12 @@ namespace BehaveTherapy.Models
         public string State { get; set; }
         [StringLength(10, ErrorMessage = "The {0} cannot be {1} characters long.")]
         public string ZipCode { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} cannot be {1} characters long.")]
+        public string Email { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} cannot be {1} characters long.")]
+        public string Phone { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} cannot be {1} characters long.")]
+        public string Fax { get; set; }
 
 
         public bool IsDeleted { get; set; }

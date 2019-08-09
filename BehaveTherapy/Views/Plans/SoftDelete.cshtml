@@ -1,0 +1,82 @@
+﻿@model BehaveTherapy.Models.Plan
+
+@{
+    ViewBag.Title = "Soft Delete Plan";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> <strong>Soft </strong>Delete Therapy Plan</title>
+</head>
+<body>
+    <br />
+
+    <h3>Are you sure you want to soft delete this? It will be removed from queries and views but will be still located in the database for recovery.</h3>
+    <div>
+        <h4>Soft Delete Therapy Plan</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Therapist)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Therapist.FullName)
+            </dd>
+
+            <dt>
+                Is Deleted
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+
+            <dt>
+                Client
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AssignedToUser.FullName)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Name)
+        @Html.HiddenFor(model => model.TherapistId)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.AssignedToUserId)
+        @Html.HiddenFor(model => model.CompanyId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Yes, Soft Delete Therapy Plan" class="btn btn-warning" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+        }
+    </div>
+</body>
+</html>
