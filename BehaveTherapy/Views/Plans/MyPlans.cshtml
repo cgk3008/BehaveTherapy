@@ -19,7 +19,12 @@
     @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
     {
 
-        <h3>@Html.ActionLink("Create New Plan", "Create") | <a href="~/Account/Register">Register New User</a></h3>
+    <h3>
+        @Html.ActionLink("Create New Plan", "Create") | @Html.ActionLink("My Plans -Soft Delete Index", "MyPlansSoftDeleteIndex")
+        <br />
+        <br />
+        <a href="~/Account/Register">Register New User</a>
+    </h3>
         <br />
 
     }
@@ -41,13 +46,7 @@
                         Therapist
                     </th>
 
-                    @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
-                    {
-
-                        <th>
-                            Plan Is Soft Deleted
-                        </th>
-                    }
+                  
                     <th>
                         Assigned to Client
                     </th>
@@ -64,58 +63,54 @@
 
                 @foreach (var item in Model)
                 {
+                    if (item.Plan.IsDeleted == false)
+                    {
 
-
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Plan.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Plan.Created.DateTime, "{0:dd-MMM-yyyy}")
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
-                        </td>
-
-                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
-                        {
+                        <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
+                                @Html.DisplayFor(modelItem => item.Plan.Name)
                             </td>
-                        }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.Created.DateTime, "{0:dd-MMM-yyyy}")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
-                        </td>
-                        <td>
 
-                            @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
+                            </td>
+                            <td>
 
-                            @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
-                            {<text
+                                @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
+
+                                @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
+                                {<text
                             > | </text>
 
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })<text
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })<text
                             > | </text>
 
-                            @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Plan.Id })
-
-                        }
-                        </td>
-                        <td>
-
-                            @foreach (var x in item.Exercises)
-                            {
-                                <li>
-
-                                    @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
-                                    <br />
-                                </li>
+                                @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Plan.Id })
 
                             }
+                            </td>
+                            <td>
 
-                        </td>
-                    </tr>
+                                @foreach (var x in item.Exercises)
+                                {
+                                    <li>
+
+                                        @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
+                                        <br />
+                                    </li>
+
+                                }
+
+                            </td>
+                        </tr>
+                    }
 
                 }
             </tbody>

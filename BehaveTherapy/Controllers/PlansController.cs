@@ -298,6 +298,40 @@ namespace BehaveTherapy.Controllers
 
         }
 
+        // GET: MyProjects
+        [Authorize]
+        public ActionResult MyPlansSoftDeleteIndex()
+        {
+
+            List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
+            var userId = User.Identity.GetUserId();
+
+
+            //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
+            List<Plan> plans = db.Plans.Where(u => u.TherapistId == userId || u.AssignedToUserId == userId).ToList();
+            //List<Exercises> exercises = db.Exercises.Where( e => e.Id == plans.)
+
+
+
+            foreach (Plan plan in plans)
+            {
+                PlanIndexViewModel vm = new PlanIndexViewModel()
+                {
+                    Plan = plan,
+                    Therapist = db.Users.Find(plan.TherapistId),
+                    //why was I making code below so difficult, already had the exercies in the plan object!!!!
+                    Exercises = plan.Exercises.ToList(),
+                    //Exercises = db.Exercises.Where( e => e.Plans.Where(p => p.Id == plan.Id)),
+                    UserId = userId
+                };
+
+                vms.Add(vm);
+            }
+            return View(vms);
+
+        }
+
+
 
 
         protected override void Dispose(bool disposing)

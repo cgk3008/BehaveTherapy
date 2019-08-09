@@ -54,7 +54,7 @@
             @Html.LabelFor(model => model.IsDeleted, "Is Soft Deleted", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeleted)
+                    @Html.EditorFor(model => model.IsDeleted) <text>UNCHECK BOX TO UNDO SOFT DELETE OF THERAPY PLAN, OR CHECK BOX TO SOFT DELETE THIS THERAPY PLAN</text>
                     @Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
                 </div>
             </div>
