@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsDeleted, "Is Deleted", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsDeleted, "Is Soft Deleted", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsDeleted)

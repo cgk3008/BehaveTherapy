@@ -80,12 +80,18 @@
                         @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
                         {
 
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                            @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Id })
-                        </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                                @*@if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || )
+                                {
+                        |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                }*@
+                                |
+                                @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Id })
+                            </td>
 
 
                             <td>
@@ -93,19 +99,19 @@
                             </td>
 
                             <td>
-                               
 
-                                    @foreach (var ex in item.Exercises)
-                                    {
-                                        <li>
-                                            @ex.Title
-                                           
-                                           
-                                            @Html.ActionLink("Remove", "RemoveExercise", "AddRmvExerciseToPlan", new { planId = item.Id, exId = ex.Id }, new { @class = "btn-sm btn-warning" })
-                                            <br />
-                                            <br />
-                                        </li>
-                                    }
+
+                                @foreach (var ex in item.Exercises)
+                                {
+                                    <li>
+                                        @ex.Title
+
+
+                                        @Html.ActionLink("Remove", "RemoveExercise", "AddRmvExerciseToPlan", new { planId = item.Id, exId = ex.Id }, new { @class = "btn-sm btn-warning" })
+                                        <br />
+                                        <br />
+                                    </li>
+                                }
 
                             </td>
                         }

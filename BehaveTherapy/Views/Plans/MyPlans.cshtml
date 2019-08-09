@@ -40,9 +40,14 @@
                     <th>
                         Therapist
                     </th>
-                    <th>
-                        Plan Is Deleted
-                    </th>
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
+                    {
+
+                        <th>
+                            Plan Is Soft Deleted
+                        </th>
+                    }
                     <th>
                         Assigned to Client
                     </th>
@@ -71,16 +76,31 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Plan.Therapist.FullName)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
-                        </td>
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Plan.IsDeleted)
+                            </td>
+                        }
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Plan.AssignedToUser.FullName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Plan.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Plan.Id })
+
+                            @Html.ActionLink("Details", "Details", new { id = item.Plan.Id })
+
+                            @if (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") || User.IsInRole("Therapist"))
+                            {<text
+                            > | </text>
+
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Plan.Id })<text
+                            > | </text>
+
+                            @Html.ActionLink("Soft Delete", "SoftDelete", new { id = item.Plan.Id })
+
+                        }
                         </td>
                         <td>
 
