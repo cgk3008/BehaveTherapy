@@ -44,8 +44,7 @@ namespace BehaveTherapy.Models.Helper
         public ICollection<ApplicationUser> ListUsersInRole(string Role)
         {
             List<ApplicationUser> roleUsers = new List<ApplicationUser>();
-            List<ApplicationUser> users = userManager.Users.ToList();
-            
+            List<ApplicationUser> users = userManager.Users.ToList();            
 
             foreach (var u in users)
             {

@@ -74,7 +74,8 @@ namespace BehaveTherapy.Controllers
         // GET: Plans/Create
         public ActionResult Create()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();  
+            
 
             UserRolesHelper userRoles = new UserRolesHelper();
 
@@ -84,6 +85,7 @@ namespace BehaveTherapy.Controllers
             var clients = userRoles.ListUsersInRole("Client").ToList();   
             ViewBag.AssignedToUserId = new SelectList(clients, "Id", "FullName");
 
+            ////should only be one company, How do I get user company ID, don't want to select company           
             var companies = db.Companies.ToList();
             ViewBag.CompanyId = new SelectList(companies, "Id", "CompanyName");
 
@@ -103,8 +105,7 @@ namespace BehaveTherapy.Controllers
                 //plan.TherapistId = User.Identity.GetUserId();
                 //ApplicationUser user = db.Users.Find(plan.TherapistId);
                 //plan.Users.Add(user);
-                var userId = User.Identity.GetUserId();
-                
+                var userId = User.Identity.GetUserId();                
 
                 plan.Created = DateTime.Now;
                 db.Plans.Add(plan);
@@ -272,10 +273,17 @@ namespace BehaveTherapy.Controllers
 
             List<PlanIndexViewModel> vms = new List<PlanIndexViewModel>();
             var userId = User.Identity.GetUserId();
+
+            //var company = db.
+
+            //var companyId = db.Companies.Where( c => c.Id == )
+
+            //List<Company> companies = db.Companies.Where( c => c.Id)
+           
           
 
             //Likely need to add company id call for Company Admin to view plans in Index!!!! similar to below
-            List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId || u.AssignedToUserId == userId).ToList();
+            List<Plan> plans = db.Plans.Where( u => u.TherapistId == userId || u.AssignedToUserId == userId /*|| u.CompanyId == */).ToList();
             //List<Exercises> exercises = db.Exercises.Where( e => e.Id == plans.)
 
 

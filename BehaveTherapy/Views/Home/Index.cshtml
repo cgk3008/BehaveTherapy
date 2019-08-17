@@ -32,49 +32,41 @@
                     </div>
                     @if (User.IsInRole("Therapist") || User.IsInRole("Client"))
                     {
-                        <H3>Therapy Plans</H3>
+                        <H2>Therapy Plans</H2>
                         <ol>
+                            <H4>
+                                @foreach (var item in Model.Plans.Take(10))
+    {
+        if (item.IsDeleted == false)
+        {
+                            <li>
+                                @Html.DisplayFor(modelItem => item.Name) | Client:   @Html.DisplayFor(modelItem => item.AssignedToUser.FullName) |
 
-                            @foreach (var item in Model.Plans.Take(10))
-                            {
-                                if (item.IsDeleted == false)
-                                {
-                                    <li>
-                                        @Html.DisplayFor(modelItem => item.Name) | Client:   @Html.DisplayFor(modelItem => item.AssignedToUser.FullName) 
-                                        
-                                       @*@foreach (var x in Model.Exercises)
-                                       {
-                                        @Html.ActionLink( item.Exercises.Where( e => e.Id == x.Id)
-
-
-                                       x.Plans.Where( e => e.Id == item.Id)
-                                       
-                                       , "Detail", "Exercises", new { id = x.Id }, null)
-                                       }*@
-
-                                        @*Trying to add exercises in the Plan with Exercise Title as actionlink
-
-                                            @foreach (var exerc in Model.Exercises.Take(10))
-                                            {
-                                                if (exerc.IsDeleted == false)
-                                                {
-                                                    @Html.ActionLink(model => exerc.Title, "Detail", "Exercises", new { id = exerc.Id }, null))
-                                                }
-
-                                            }*@
+                                @foreach (var x in item.Exercises)
+    {
 
 
-                                    </li>
+                            @Html.ActionLink(x.Title, "Details", "Exercises", new { id = x.Id }, null)
+                            <br />
 
 
-                                }
+}
 
-                            }
+
+
+
+                            </li>
+
+
+}
+
+}
+                            </H4>
 
                         </ol>
                     }
 
-                   
+
 
                     <!-- Tab -->
                     <h2>Horizontal Tab</h2>
@@ -93,6 +85,8 @@
                                         </div>
                                         <div class="post-content blog-post-content">
                                             <h4>
+
+
                                                 <a href="~/Assets/GALLAXY-HTML/HTML/GallaxyBoxed/single-post.html">CLICK THIS TITLE FOR TEST LINK TO VIDEO</a>
                                             </h4>
                                             <p>

@@ -23,7 +23,7 @@ namespace BehaveTherapy.Models
         public virtual ICollection<PlanComments> Comment { get; set; }
         public virtual ICollection<PlanAttachments> Attachment { get; set; }
         public virtual ICollection<PlanHistory> History { get; set; }
-        public virtual ICollection<ExerciseLog> ExerciseLog { get; set;}
+        public virtual ICollection<ExerciseLog> ExerciseLogs { get; set;}
 
         public ApplicationUser()
         {
@@ -35,7 +35,7 @@ namespace BehaveTherapy.Models
             Comment = new HashSet<PlanComments>();
             Attachment = new HashSet<PlanAttachments>();
             History = new HashSet<PlanHistory>();
-            ExerciseLog = new HashSet<ExerciseLog>();
+            ExerciseLogs = new HashSet<ExerciseLog>();
         }
 
 
@@ -75,6 +75,7 @@ namespace BehaveTherapy.Models
         public DbSet<PlanStatus> PlanStatus { get; set; }
         public DbSet<PlanType> PlanTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<ExerciseLog> ExerciseLogs { get; set; }
 
      
 

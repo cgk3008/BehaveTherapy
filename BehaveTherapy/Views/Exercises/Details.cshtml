@@ -115,12 +115,12 @@
 
                             <!--Video code below may have still worked-->
                             <!--<video controls="controls" width="100%" height="100%">
-                                <source src="~/Assets/Videos/SavageRace.mp4" type="video/mp4" />
-                            </video>-->
+                    <source src="~/Assets/Videos/SavageRace.mp4" type="video/mp4" />
+                </video>-->
                             <!--USED THIS STACKOVERFLOW ANSWER TO PROPERLY LOAD MP4s using web.config in video folder-->
                             <!--https://stackoverflow.com/questions/6273607/windows-azure-serve-unknown-mp4-mime-types-in-windows-azure-iis-storage
 
-                                HAS TO BE AN MP4 or MP3!!!!-->
+                HAS TO BE AN MP4 or MP3!!!!-->
                             <video controls="controls" src="@Model.FileUrl"></video>
 
                         </div>
@@ -129,21 +129,36 @@
 
 
                 </div>
+
+                Exercise Completed
+
+                @using (Html.BeginForm("ExerciseCompleted", "ExerciseLog", FormMethod.Post, new { enctype = "Multipart/form-data" }))
+    {
+            @Html.AntiForgeryToken()
+            @*<input name="PlanId" value="@Model.Plans" hidden />*@
+            <input name="ExerciceId" value="@Model.Id" hidden />
+
+            <div class="form-actions no-color">
+                <input type="submit" value="ExerciseCompleted" class="btn btn-default" /> |
+
+            </div>
+            <br />
+}
                 <p>
                     @if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <text> | </text>
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <text> | </text>
 
-                    }
-                    else
-                    {
-                        @Html.ActionLink("My Plans", "MyPlans", "Plans")
-                    }
+}
+else
+{
+            @Html.ActionLink("My Plans", "MyPlans", "Plans")
+}
 
                     @if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Back to List", "Index")
-                    }
+        {
+            @Html.ActionLink("Back to List", "Index")
+}
                     <br />
                     <br />
                     <h3>

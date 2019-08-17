@@ -95,27 +95,28 @@ namespace BehaveTherapy.Models.Helper
 
         }
 
-        public Exception ListUserCompanyId(string userId)
-        {
+        //public Exception ListUserCompanyId(string userId)
+        //{
 
-            //I don't think this is what I want for code below, overcomplicated?
-            try
-            {
-                var usr = db.Users.Find(userId);
-                //List<Company> companies = db.Users.Find(userId).Plan.
+        //    //I don't think this is what I want for code below, overcomplicated?
+        //    try
+        //    {
+        //        var usr = db.Users.Find(userId);
 
-                // var userCompany = db.Users.Where(u => u.)
+        //        var companyId = db.Companies.Where(c => c.)
 
+        //        //List<Company> companies = db.Users.Find(userId).Plan.
 
-                //company.Users.Remove(usr);
-                db.SaveChanges();
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return ex;
-            }
-        }
+        //        // var userCompany = db.Users.Where(u => u.)
+
+                
+        //        return null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ex;
+        //    }
+        //}
 
         //public ICollection<ApplicationUser> ListAdminForCompany(int companyId)
         //{

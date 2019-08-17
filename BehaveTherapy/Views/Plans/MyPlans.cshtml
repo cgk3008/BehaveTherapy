@@ -63,7 +63,7 @@
 
                 @foreach (var item in Model)
                 {
-                    if (item.Plan.IsDeleted == false)
+                    if (item.Plan.IsDeleted == false /*&& item.Plan.CompanyId == item.CompanyId.Company.Where(c => c. == User.*/)
                     {
 
                         <tr>
