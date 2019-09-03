@@ -135,7 +135,7 @@
                 @using (Html.BeginForm("ExerciseCompleted", "ExerciseLog", FormMethod.Post, new { enctype = "Multipart/form-data" }))
     {
             @Html.AntiForgeryToken()
-            @*<input name="PlanId" value="@Model.Plans" hidden />*@
+            <input name="PlanId" value="@Model.Plans.Where( p => p.Id ==  " hidden />
             <input name="ExerciseId" value="@Model.Id" hidden />
 
             <div class="form-actions no-color">

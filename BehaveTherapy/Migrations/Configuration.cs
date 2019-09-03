@@ -170,7 +170,7 @@ namespace BehaveTherapy.Migrations
             }
 
 
-            if (!context.Plans.Any( t => t.Name == "Group 1"))
+            if (!context.Plans.Any(t => t.Name == "Group 1"))
             {
                 var tp = new Plan
                 {
@@ -181,7 +181,7 @@ namespace BehaveTherapy.Migrations
                     AssignedToUserId = "0ab23451-4ff1-4f7b-9714-19a081b96965"
                 };
 
-                context.Plans.Add(new Plan { Name = "Group 1" });                
+                context.Plans.Add(new Plan { Name = "Group 1" });
             }
 
             if (!context.Companies.Any(t => t.CompanyName == "Test Company22"))
@@ -196,7 +196,7 @@ namespace BehaveTherapy.Migrations
                     IsDeleted = false,
 
                     //CompanyAdmin = userManager.FindByEmail("craig228800@gmail.com"),
-                    
+
                 };
 
                 context.Companies.Add(new Company { CompanyName = "Test Company 22" });
